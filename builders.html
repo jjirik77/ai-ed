@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Build Studio | Faculty AI Integration Studio</title>
+<meta name="description" content="Four prompt builders that turn your course materials into a grounded repository, a unit framework, lessons, and activities.">
+<link rel="stylesheet" href="fai.css">
+<style>
+.bd-sec { background: var(--card); border: 1px solid var(--border); border-left: 6px solid var(--ink); border-radius: 4px; padding: 1.2rem 1.3rem; margin: 2rem 0; font-family: var(--sans); }
+.bd-sec.prof { border-left-color: var(--accent); }
+.bd-sec h2 { font-family: var(--serif); font-size: 1.35rem; color: var(--ink); margin: .25rem 0 .3rem; }
+.bd-meta { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-bottom: .6rem; }
+.bd-sup { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .15rem .55rem; border-radius: 10px; background: var(--ink-soft); color: var(--ink); }
+.bd-sup.part { background: var(--accent-pale); color: var(--accent-dark); }
+.bd-sup.light { background: var(--caution-bg); color: var(--caution); }
+.bd-intro { font-size: .9rem; color: var(--text-2); margin-bottom: .6rem; }
+.bd-f { margin: .7rem 0; }
+.bd-f > label, .bd-f > .bd-l { display: block; font-weight: 700; font-size: .86rem; color: var(--ink); margin-bottom: .2rem; }
+.bd-f .bd-h { display: block; font-weight: 400; font-size: .78rem; color: var(--muted); }
+.bd-f.you > label::before, .bd-f.you > .bd-l::before { content: 'You write \00B7  '; color: var(--accent-dark); }
+.bd-f input[type=text], .bd-f input[type=number], .bd-f textarea, .bd-f select { width: 100%; font: inherit; font-size: .88rem; padding: .45rem .5rem; border: 1px solid var(--border); border-radius: 3px; background: #fff; }
+.bd-f.you textarea, .bd-f.you input { border-color: #e0b48f; background: #fffaf5; }
+.bd-f textarea { min-height: 3.6rem; resize: vertical; }
+.bd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+.bd-checks { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: .25rem .9rem; }
+.bd-checks label { font-size: .86rem; display: flex; gap: .45rem; align-items: flex-start; font-weight: 400; color: var(--text); }
+.bd-checks input { margin-top: .25rem; accent-color: var(--ink); }
+.bd-item { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; background: var(--alt); border-radius: 4px; padding: .5rem .7rem; margin: .6rem 0; font-size: .86rem; }
+.bd-item select { width: auto; font: inherit; padding: .3rem .4rem; border: 1px solid var(--border); border-radius: 3px; }
+.bd-outs { margin-top: 1rem; border-top: 2px solid var(--border); padding-top: .8rem; }
+.bd-out-h { display: flex; justify-content: space-between; align-items: center; gap: .6rem; margin: .7rem 0 .3rem; }
+.bd-out-h b { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mid); }
+.bd-out { width: 100%; min-height: 12rem; font-family: var(--mono); font-size: .8rem; line-height: 1.5; padding: .8rem .9rem; border: 1px solid var(--border); border-radius: 4px; background: #f1f0f8; resize: vertical; }
+.bd-note { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+.bd-warn { margin-top: .7rem; }
+@media (max-width: 720px) { .bd-grid { grid-template-columns: 1fr; } }
+@media print { .bd-out { min-height: 0; border: 1px solid #999; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<button class="menu-btn" type="button" aria-expanded="false" aria-label="Open course menu">☰ Menu</button>
+<nav class="side" aria-label="Course navigation"><a class="side-brand" href="index.html"><span class="side-seal">AI<br>PD</span><span class="side-title">AI Integration Studio<small>8-week faculty learning studio</small></span></a><nav aria-label="Pages"><ul></ul><div class="side-group">Course</div><ul><li><a class="nl" href="index.html"><span class="nn"></span><span>Course map</span></a></li></ul><div class="side-group">Modules</div><ul><li><a class="nl" href="lesson00.html"><span class="nn">0</span><span>Orientation & readiness</span></a></li><li><a class="nl" href="lesson01.html"><span class="nn">1</span><span>AI fundamentals & human-centered use</span></a></li><li><a class="nl" href="lesson02.html"><span class="nn">2</span><span>LLMs & the AI tool ecosystem</span></a></li><li><a class="nl" href="lesson03.html"><span class="nn">3</span><span>Prompt & workflow engineering</span></a></li><li><a class="nl" href="lesson04.html"><span class="nn">4</span><span>Output, source & data validation</span></a></li><li><a class="nl" href="lesson05.html"><span class="nn">5</span><span>Materials, accessibility & copyright</span></a></li><li><a class="nl" href="lesson06.html"><span class="nn">6</span><span>Student AI literacy & activities</span></a></li><li><a class="nl" href="lesson07.html"><span class="nn">7</span><span>Assessment, grading & course policy</span></a></li><li><a class="nl" href="lesson08.html"><span class="nn">8</span><span>Ethics, equity & implementation</span></a></li></ul><div class="side-group">Toolkit</div><ul><li><a class="nl" href="builders.html" aria-current="page"><span class="nn">B</span><span>Course Build Studio</span></a><div class="toc"><a href="#how">How the builders work</a><a href="#profile">Course profile</a><a href="#b1">1 Repository</a><a href="#b2">2 Unit framework</a><a href="#b3">3 Lessons</a><a href="#b4">4 Activities</a><a href="#after">After each builder</a></div></li><li><a class="nl" href="portfolio.html"><span class="nn">★</span><span>AI Integration Portfolio</span></a></li><li><a class="nl" href="facilitator.html"><span class="nn">F</span><span>Facilitator guide</span></a></li><li><a class="nl" href="resources.html"><span class="nn">R</span><span>Resource kit & sources</span></a></li></ul></nav><div class="side-prog" data-prog-box role="status"><span class="sp-status"></span><button type="button" class="sp-link" data-prog="open">Open progress file</button><input type="file" accept=".json,application/json" class="sr" data-prog-input tabindex="-1" aria-hidden="true"></div></nav>
+<div class="page">
+
+<header class="lesson-hero"><div class="lesson-hero-inner">
+<p class="crumb"><a href="index.html">Course map</a> &rsaquo; <span>Course Build Studio</span></p>
+<span class="badge-lg">Fieldwork · Weeks 1–8</span>
+<h1>Course Build <span>Studio</span></h1>
+<p class="lede"><span class="dq">The deliverable</span>Your course materials go into a repository, and four prompt builders turn them into a unit framework, a lesson for each lesson in it, and activities. You review and revise every output before it reaches students.</p>
+<div class="chips"><span class="chip">Builders: <strong>4</strong></span><span class="chip">Works with: <strong>any approved AI tool that accepts files</strong></span><span class="chip">Saves: <strong>this browser only</strong></span></div>
+</div></header>
+<main class="wrap" id="main">
+<section class="block" id="how"><p class="eyebrow">How the builders work</p><h2 class="h2">You fill in the form; the builder writes the prompt</h2><div class="rule"></div>
+<p>You do not need to be a prompt engineer. Each builder asks plain questions about your course, then assembles a complete prompt you can read, edit, and copy into your approved AI tool. The prompts follow the specification method from <a href="lesson03.html">Module 3</a>: goal, context, sources, constraints, process, format, quality criteria, and validation.</p>
+<div class="tscroll"><table class="t run"><thead><tr><th>Week</th><th>Builder</th><th>What you produce</th></tr></thead><tbody>
+<tr><td>1</td><td>Course profile</td><td>The unit you will build and the files you will use</td></tr>
+<tr><td>2</td><td>1 Repository</td><td>A project space with your files, standing instructions, and a grounding test</td></tr>
+<tr><td>3</td><td>2 Unit framework</td><td>The unit structure: lessons, outcomes, sources, and checks</td></tr>
+<tr><td>4</td><td>Check prompts + TRACE</td><td>A validated framework (see <a href="lesson04.html">Module 4</a>)</td></tr>
+<tr><td>5</td><td>3 Lessons</td><td>One lesson for each lesson in the framework</td></tr>
+<tr><td>6</td><td>4 Activities</td><td>A student activity for each lesson that needs one</td></tr>
+<tr><td>7–8</td><td>Modules 7 and 8</td><td>The unit assessment, AI-use directions, and a 30-day pilot of the unit</td></tr>
+</tbody></table></div>
+<p>The support fades on purpose. Builders 1 and 2 write the whole prompt for you. Builder 3 leaves the quality criteria for you to write. Builder 4 leaves the parts that protect student learning for you to write. By Week 6 you are writing the parts that matter most.</p>
+<div class="callout guard"><b class="lbl">Responsible use</b><p>Use only your institution's approved AI tool, and upload only files you are allowed to use that way. Never upload student work, names, grades, accommodations, or confidential records. Every builder output is a draft: check it with <a href="lesson04.html">TRACE</a> and revise it substantially before students see it.</p></div>
+<div class="callout local"><b class="lbl">Local policy · fill in for your institution</b><p>Approved tool with a project or file-upload space: <span class="fill" data-local="uploadtool">[tool name and how to access it]</span>. Library contact for licensed materials: <span class="fill" data-local="library">[name, email]</span>.</p></div>
+<div data-save-strip="open"></div>
+<p class="pf-status" id="bd-status" aria-live="polite"></p>
+</section>
+<div id="bd-root"></div>
+<section class="block" id="after"><p class="eyebrow">After each builder</p><h2 class="h2">From draft to deliverable</h2><div class="rule"></div>
+<ol><li><b>Run the prompt</b> in your approved tool, inside the project that holds your files.</li>
+<li><b>Run the check prompt</b> in the same conversation. It asks the tool to list unsupported claims and gaps; it does not replace your review.</li>
+<li><b>Apply TRACE</b> to anything students will rely on: open the cited files, recompute numbers, and look for missing perspectives.</li>
+<li><b>Revise substantially.</b> Your expertise, examples, and voice are what make the lesson yours, and they matter for authorship (see <a href="lesson05.html">Module 5</a>).</li>
+<li><b>Record it</b> in your <a href="portfolio.html">portfolio</a>: where the final version is saved and what you changed.</li></ol>
+</section>
+<nav class="pager" aria-label="Pager"><a href="lesson08.html"><span class="dir">← Previous</span><span class="nm">Module 8</span></a><a class="next" href="portfolio.html"><span class="dir">Next →</span><span class="nm">AI Integration Portfolio</span></a></nav>
+</main>
+
+<footer class="foot">Faculty AI Integration Studio · Institution-neutral faculty professional development · Content verified 2026-10-22. Check dated callouts before each delivery.</footer>
+</div>
+<script src="fai.js"></script>
+<script>
+(function () {
+  var esc = FAI.esc, data = FAI.store.get('build', {}), status = document.getElementById('bd-status'), tmr;
+  var PROFILE = [
+    { k: 'course', l: 'Course', h: 'Number and title, for example "BIO 110 Principles of Biology"', t: 'text' },
+    { k: 'level', l: 'Level', t: 'select', o: ['', 'first-year undergraduate', 'second-year undergraduate', 'upper-division undergraduate', 'graduate', 'career and technical certificate', 'dual-credit high school', 'noncredit or workforce'] },
+    { k: 'modality', l: 'Modality', t: 'select', o: ['', 'in person', 'online asynchronous', 'online synchronous', 'hybrid'] },
+    { k: 'unit', l: 'Unit to build', h: 'One unit of 3 to 6 lessons is a realistic scope for eight weeks', t: 'text' },
+    { k: 'learners', l: 'Your learners', h: 'Prior knowledge, common misconceptions, language and access needs, working students, and so on. No names.', t: 'area' },
+    { k: 'cos', l: 'Course outcomes this unit serves', h: 'Paste them from your syllabus', t: 'area' }
+  ];
+  var B = [
+    { id: 'b1', n: 1, week: 2, title: 'Repository: put your materials in one grounded space', sup: ['', 'Full support'],
+      intro: 'A repository is a project or notebook space in your approved AI tool where you upload course files, so answers come from your materials (retrieval-augmented generation). This builder writes the standing instructions for that space and a test to check that it really answers from your files.',
+      f: [
+        { k: 'files', l: 'Files you plan to upload', h: 'One per line: file name, what it is. For example: "Unit3_lecture_notes.docx, my lecture notes"', t: 'area' },
+        { k: 'ok', l: 'Upload check (all must be true)', t: 'checks', o: ['I created these files, or our license allows this use', 'No student names, work, grades, or accommodations', 'No unpublished research or confidential records', 'Publisher material cleared with the library or license terms'] },
+        { k: 'style', l: 'House style for every output', h: 'Optional. For example: "plain language, American English, examples from nursing and allied health"', t: 'area' },
+        { k: 'tests', l: 'Three test questions whose answers you know are in your files', h: 'One per line. Pick facts that a general model would likely answer differently or not at all.', t: 'area' }
+      ],
+      out: function (v, p) {
+        var files = lines(v.files);
+        return [
+          { label: 'Standing instructions (paste into the project\'s instructions or custom-instructions field)', text:
+'You are a course-design assistant for ' + val(p.course, '[course]') + ', a ' + val(p.level, '[level]') + ' course taught ' + val(p.modality, '[modality]') + '. I am the instructor. You help me draft course materials; I review and revise everything before students see it.\n\n' +
+'SOURCES\nUse the files in this project as your primary source:\n' + (files.length ? files.map(function (x) { return '- ' + x; }).join('\n') : '- [list your files]') + '\n\n' +
+'RULES\n1. Ground every factual claim, definition, example, and number in the project files. After each such claim, cite the file name and section or page in brackets.\n' +
+'2. If the files do not support something I ask for, say "Not in the sources" and stop for my direction. Do not fill gaps from general knowledge without labeling it "General knowledge, verify".\n' +
+'3. Never invent citations, quotations, statistics, or page numbers.\n4. Match the level and needs of these learners: ' + val(p.learners, '[describe learners]') + '\n' +
+(v.style ? '5. House style: ' + v.style.trim() + '\n' : '') +
+'\nAt the end of every response, add a short section titled "Check before use" that lists any statement that is not directly supported by the files.' },
+          { label: 'Grounding test (run this first, in the project)', text:
+'Answer each question using only the project files. For each answer, quote the exact sentence you relied on and give the file name and location. If a question is not answered in the files, say "Not in the sources."\n\n' +
+(lines(v.tests).length ? lines(v.tests).map(function (x, i) { return (i + 1) + '. ' + x; }).join('\n') : '1. [question]\n2. [question]\n3. [question]') +
+'\n\nThen ask yourself: what is one question about this unit that the files do NOT answer? Tell me so I can add a source.' }
+        ];
+      },
+      warn: function (v) { var n = [0, 1, 2, 3].filter(function (i) { return v['ok-' + i]; }).length; return n < 4 ? ['bad', '✗ Do not upload yet. ' + (4 - n) + ' upload check' + (4 - n > 1 ? 's are' : ' is') + ' not confirmed. Remove the file or confirm the license first.'] : ['ok', '✓ Upload check complete. After you run the grounding test, confirm every quoted sentence really is in the file named.']; },
+      check: 'Pass test: every answer quotes a real sentence from the named file. If the tool answers a question your files do not cover without saying "Not in the sources," tighten the instructions or add the missing file.' },
+    { id: 'b2', n: 2, week: 3, title: 'Unit framework: the structure of your unit', sup: ['', 'Full support'],
+      intro: 'This builder asks the tool for a lesson-by-lesson structure for the unit, aligned to your outcomes and grounded in your files. You decide what stays.',
+      f: [
+        { k: 'count', l: 'Number of lessons', t: 'number' },
+        { k: 'time', l: 'Time per lesson', h: 'For example: "75-minute class plus 2 hours of homework"', t: 'text' },
+        { k: 'uos', l: 'Unit outcomes', h: 'Leave blank to have the tool propose 3 to 5 measurable outcomes from your course outcomes for you to edit', t: 'area' },
+        { k: 'assess', l: 'How the unit is assessed', h: 'For example: "a lab report and a short quiz"', t: 'area' },
+        { k: 'cons', l: 'Constraints', h: 'Required topics, lab or clinical requirements, accreditation standards, textbook chapters, what to avoid', t: 'area' }
+      ],
+      out: function (v, p) {
+        return [
+          { label: 'Framework prompt', text:
+'GOAL\nDraft a lesson-by-lesson framework for the unit "' + val(p.unit, '[unit]') + '" in ' + val(p.course, '[course]') + '. I will review and revise it; this is a working draft.\n\n' +
+'CONTEXT\nLevel: ' + val(p.level, '[level]') + '. Modality: ' + val(p.modality, '[modality]') + '.\nLearners: ' + val(p.learners, '[learners]') + '\nCourse outcomes served: ' + val(p.cos, '[course outcomes]') + '\n\n' +
+'UNIT OUTCOMES\n' + (v.uos && v.uos.trim() ? v.uos.trim() : 'Propose 3 to 5 measurable unit outcomes using observable verbs, each mapped to a course outcome. Mark them "Proposed" so I can edit them.') + '\n\n' +
+'SOURCES\nUse the project files. Cite the file name and section for the content of each lesson. If the files do not cover a needed topic, write "Gap: needs a source."\n\n' +
+'CONSTRAINTS\n' + val(v.count, '[number]') + ' lessons, each ' + val(v.time, '[time per lesson]') + '. Unit assessment: ' + val(v.assess, '[assessment]') + '\n' + (v.cons ? v.cons.trim() + '\n' : '') +
+'\nPROCESS\n1. Sequence the outcomes from foundational to complex.\n2. For each lesson, choose the outcome it serves and the evidence that will show learning.\n3. Only then suggest an activity type and where, if anywhere, AI could support students. "No AI" is a valid choice.\n\n' +
+'FORMAT\nA table with one row per lesson and these columns: Lesson #, Title, Unit outcome(s), Key concepts, Source files, Learning activity, Check for understanding, Possible AI role (or "None").\nAfter the table: a short alignment note showing that every unit outcome is taught and checked at least once.\n\n' +
+'QUALITY CRITERIA\nEvery lesson has one clear outcome; checks match the outcome\'s cognitive level; the workload fits the time given; examples suit these learners.\n\n' +
+'VALIDATION\nEnd with "Check before use": any content not supported by the files, any outcome not assessed, and any lesson that looks overloaded.' },
+          { label: 'Check prompt (run after the framework, in the same conversation)', text:
+'Review the framework you just produced as a skeptical instructional designer. List problems in a table with columns: Lesson #, Problem, Why it matters, Suggested fix. Check specifically for:\n1. Outcomes that are not measurable or not assessed.\n2. Checks for understanding that test recall when the outcome asks for application or evaluation.\n3. Lessons that are overloaded for the time given.\n4. Content that cites no project file, or cites a file that does not say it.\n5. Places where an AI role would do the thinking the outcome is meant to develop.\nDo not rewrite the framework yet.' }
+        ];
+      },
+      check: 'Week 4: run TRACE on the framework. Open each cited file and confirm it supports the lesson content. Keep, revise, or reject each row, and note why.' },
+    { id: 'b3', n: 3, week: 5, title: 'Lessons: one for each lesson in your framework', sup: ['part', 'Partial support: you write the quality criteria'], item: 'Lesson',
+      intro: 'Choose a lesson number, fill in its details from your framework, and generate its prompt. Repeat for each lesson. The course profile carries over automatically.',
+      f: [
+        { k: 'title', l: 'Lesson title', t: 'text' },
+        { k: 'outcome', l: 'Lesson outcome', h: 'From your framework', t: 'area' },
+        { k: 'mins', l: 'Length', h: 'For example: "75 minutes in class"', t: 'text' },
+        { k: 'prior', l: 'What students already know or did last lesson', t: 'area' },
+        { k: 'src', l: 'Source files for this lesson', h: 'File names from your repository', t: 'text' },
+        { k: 'parts', l: 'Include', t: 'checks', o: ['Opening hook or retrieval question', 'Explanation in short segments', 'Worked example', 'Guided practice', 'Independent practice', 'Check for understanding with answer key', 'Two ways to engage or represent the content (UDL)', 'Instructor notes and timing', 'Slide or handout outline'] },
+        { k: 'crit', l: 'Quality criteria', h: 'How will you judge this lesson? For example: "examples from local industry; no more than 3 new terms; practice problems match the outcome level; answer key shows steps"', t: 'area', you: 1 },
+        { k: 'human', l: 'What you will add yourself', h: 'Your stories, demonstrations, discipline judgment, or anything the tool should leave as a placeholder', t: 'area', you: 1 }
+      ],
+      out: function (v, p, i) {
+        var parts = [0, 1, 2, 3, 4, 5, 6, 7, 8].filter(function (k) { return v['parts-' + k]; }).map(function (k) { return B[2].f[5].o[k]; });
+        return [
+          { label: 'Lesson prompt (Lesson ' + i + ')', text:
+'GOAL\nDraft Lesson ' + i + ', "' + val(v.title, '[title]') + '", for the unit "' + val(p.unit, '[unit]') + '" in ' + val(p.course, '[course]') + '. I will revise it before teaching.\n\n' +
+'CONTEXT\nLevel: ' + val(p.level, '[level]') + '. Modality: ' + val(p.modality, '[modality]') + '. Length: ' + val(v.mins, '[length]') + '.\nLearners: ' + val(p.learners, '[learners]') + '\nStudents already know: ' + val(v.prior, '[prior knowledge]') + '\n\n' +
+'OUTCOME\n' + val(v.outcome, '[lesson outcome]') + '\n\nSOURCES\nUse these project files: ' + val(v.src, '[file names]') + '. Cite the file and section for every fact, definition, and example. Write "Gap: needs a source" where they fall short.\n\n' +
+'INCLUDE\n' + (parts.length ? parts.map(function (x) { return '- ' + x; }).join('\n') : '- [choose components]') + '\n\n' +
+'LEAVE FOR ME\nInsert a clearly marked placeholder "[INSTRUCTOR: ...]" for: ' + val(v.human, '[what you will add yourself]') + '\n\n' +
+'PROCESS\nStart from the outcome. Write the check for understanding first, then the practice that prepares students for it, then the explanation they need. Keep each explanation segment under 10 minutes.\n\n' +
+'FORMAT\nHeadings for each part with minutes. Plain language at the level of these learners. Real headings and lists so the document is accessible; describe any image in words.\n\n' +
+'QUALITY CRITERIA\n' + val(v.crit, '[WRITE YOUR QUALITY CRITERIA: the builder leaves this to you]') + '\n\n' +
+'VALIDATION\nEnd with "Check before use": unsupported statements, any numbers I should recompute, and any part that may be too long for the time.' },
+          { label: 'Check prompt (Lesson ' + i + ')', text:
+'Review the lesson you just drafted against my quality criteria and these checks. Report a table with columns: Part, Problem, Fix.\n1. Does every practice item and the check for understanding match the outcome\'s level?\n2. Is every fact traced to a named project file? Quote any that are not.\n3. Recompute every number and answer-key item and show your work.\n4. Accessibility: headings, plain language, image descriptions, no meaning carried by color alone.\n5. Representation: do examples and names reflect varied learners without stereotypes?\n6. Timing: does it fit ' + val(v.mins, 'the time') + '?' }
+        ];
+      },
+      warn: function (v) { return !v.crit || !v.crit.trim() ? ['warn', '⚠ The quality criteria are yours to write. The prompt shows a placeholder until you do, and a lesson without criteria is hard to judge.'] : ['ok', '✓ Prompt complete. After you run it, check every cited file and recompute every answer before you revise.']; },
+      check: 'Revise substantially: add your own examples and voice, cut what does not serve the outcome, and run the Module 5 accessibility checks.' },
+    { id: 'b4', n: 4, week: 6, title: 'Activities: where students do the thinking', sup: ['light', 'Light support: you write the safeguards'], item: 'Lesson',
+      intro: 'Build an activity for a lesson. You decide the AI role, if any. The parts that protect learning (verification, evidence, disclosure, fallback, access) are yours to write, as practiced in Module 6.',
+      f: [
+        { k: 'outcome', l: 'Outcome the activity serves', t: 'area' },
+        { k: 'mins', l: 'Length and grouping', h: 'For example: "30 minutes, pairs, in class"', t: 'text' },
+        { k: 'role', l: 'AI role', t: 'select', o: ['', 'No AI', 'Coach: asks questions, never gives answers', 'Simulator: plays a client, patient, customer, or stakeholder', 'Critic: gives feedback on a student draft', 'Debate partner: argues the other side', 'Source of flawed work: students find and fix errors'] },
+        { k: 'student', l: 'What students do (the target thinking)', t: 'area' },
+        { k: 'verify', l: 'Verification step', h: 'How students check what the AI said', t: 'area', you: 1 },
+        { k: 'evidence', l: 'Evidence of learning you will collect', t: 'area', you: 1 },
+        { k: 'disclose', l: 'Disclosure expectation', t: 'area', you: 1 },
+        { k: 'fallback', l: 'No-AI fallback', t: 'area', you: 1 },
+        { k: 'access', l: 'Accessibility provision', t: 'area', you: 1 }
+      ],
+      out: function (v, p, i) {
+        var ai = v.role && v.role !== 'No AI', o = [
+          { label: 'Activity prompt (Lesson ' + i + ')', text:
+'GOAL\nDraft a ready-to-run student activity for Lesson ' + i + ' of the unit "' + val(p.unit, '[unit]') + '" in ' + val(p.course, '[course]') + '. I will revise it.\n\n' +
+'CONTEXT\nLevel: ' + val(p.level, '[level]') + '. Learners: ' + val(p.learners, '[learners]') + '\nOutcome: ' + val(v.outcome, '[outcome]') + '\nLength and grouping: ' + val(v.mins, '[length, grouping]') + '\n\n' +
+'ROLES\nAI role: ' + val(v.role, '[AI role]') + '\nStudents: ' + val(v.student, '[target thinking]') + '\nThe students, not the AI, must do the target thinking.\n\n' +
+'SAFEGUARDS (include exactly as written)\nVerification: ' + val(v.verify, '[WRITE: verification step]') + '\nEvidence of learning: ' + val(v.evidence, '[WRITE: evidence]') + '\nDisclosure: ' + val(v.disclose, '[WRITE: disclosure]') + '\nNo-AI fallback: ' + val(v.fallback, '[WRITE: fallback]') + '\nAccessibility: ' + val(v.access, '[WRITE: accessibility]') + '\n\n' +
+'SOURCES\nUse the project files for content and cite them.\n\n' +
+'FORMAT\n1. Student-facing instructions in plain language, numbered steps with minutes.\n2. A short facilitation guide for me: setup, what to watch for, two debrief questions about what students learned and how they used AI.\n3. A one-paragraph explanation of how the evidence shows the outcome was met.\n\n' +
+'VALIDATION\nEnd with "Check before use": any step where students could hand the target thinking to AI, and anything not supported by the files.' }];
+        if (ai) o.push({ label: 'Student AI prompt (students paste this into the approved tool)', text:
+'You are my ' + v.role.split(':')[0].toLowerCase() + ' for a ' + val(p.course, '[course]') + ' activity. Your role: ' + v.role + '.\n' +
+'My task: ' + val(v.student, '[task]') + '\n' +
+'Rules: Do not do the task for me or give me the final answer. Keep each reply under 120 words. Ask me one question at a time. If I ask you to just do it, remind me of your role. If you are unsure of a fact, say so and tell me to check the course materials.' });
+        o.push({ label: 'Check prompt (Lesson ' + i + ' activity)', text:
+'Review the activity as a skeptical colleague. Where could a student complete it without doing the target thinking? Does the evidence actually show the outcome? Is the no-AI fallback equal in learning value and effort? Is anything inaccessible to a student using a screen reader or with limited internet? List problems and fixes in a table.' });
+        return o;
+      },
+      warn: function (v) { var miss = ['verify', 'evidence', 'disclose', 'fallback', 'access'].filter(function (k) { return !v[k] || !v[k].trim(); }).length; return miss ? ['warn', '⚠ ' + miss + ' of 5 safeguards still need your words. They appear as placeholders in the prompt.'] : ['ok', '✓ All five safeguards written. Run the check prompt, then try the activity yourself as a student before you use it.']; },
+      check: 'Try the activity as a student before using it. If you can finish it by handing the target thinking to AI, redesign it (Module 6 responsibility map).' }
+  ];
+  function lines(s) { return (s || '').split('\n').map(function (x) { return x.trim(); }).filter(Boolean); }
+  function val(s, d) { return s && String(s).trim() ? String(s).trim() : d; }
+
+  function fld(prefix, f) {
+    var id = prefix + '-' + f.k, h = f.h ? '<span class="bd-h">' + esc(f.h) + '</span>' : '', cls = 'bd-f' + (f.you ? ' you' : '');
+    if (f.t === 'text' || f.t === 'number') return '<div class="' + cls + '"><label for="' + id + '">' + esc(f.l) + h + '</label><input type="' + f.t + '" id="' + id + '" data-b="' + f.k + '"' + (f.t === 'number' ? ' min="1" max="20"' : '') + '></div>';
+    if (f.t === 'area') return '<div class="' + cls + '"><label for="' + id + '">' + esc(f.l) + h + '</label><textarea id="' + id + '" data-b="' + f.k + '"></textarea></div>';
+    if (f.t === 'select') return '<div class="' + cls + '"><label for="' + id + '">' + esc(f.l) + h + '</label><select id="' + id + '" data-b="' + f.k + '">' + f.o.map(function (o) { return '<option value="' + esc(o) + '">' + (o ? esc(o) : 'Choose…') + '</option>'; }).join('') + '</select></div>';
+    if (f.t === 'checks') return '<div class="' + cls + '"><span class="bd-l">' + esc(f.l) + h + '</span><div class="bd-checks">' + f.o.map(function (o, i) { return '<label><input type="checkbox" data-b="' + f.k + '-' + i + '"> ' + esc(o) + '</label>'; }).join('') + '</div></div>';
+  }
+  var root = document.getElementById('bd-root');
+  root.innerHTML = '<section class="bd-sec prof" id="profile"><p class="eyebrow">Week 1 · Course profile</p><h2>Your course and unit</h2><p class="bd-intro">Every builder reuses these answers, so you type them once.</p><div class="bd-grid">' +
+    PROFILE.map(function (f) { return fld('p', f); }).join('') + '</div><div data-save-strip></div></section>' +
+    B.map(function (b) {
+      return '<section class="bd-sec" id="' + b.id + '"><p class="eyebrow">Builder ' + b.n + ' · Week ' + b.week + '</p><h2>' + esc(b.title) + '</h2>' +
+        '<div class="bd-meta"><span class="bd-sup ' + b.sup[0] + '">' + esc(b.sup[1]) + '</span></div><p class="bd-intro">' + esc(b.intro) + '</p>' +
+        (b.item ? '<div class="bd-item"><label for="' + b.id + '-sel"><b>Working on</b></label><select id="' + b.id + '-sel" class="bd-sel"></select><span>Each lesson keeps its own answers.</span></div>' : '') +
+        '<div class="bd-fields">' + b.f.map(function (f) { return fld(b.id, f); }).join('') + '</div>' +
+        '<div class="iw-result bd-warn" id="' + b.id + '-warn" aria-live="polite" hidden></div>' +
+        '<div class="bd-outs" id="' + b.id + '-outs"></div><p class="bd-note"><b>Then:</b> ' + esc(b.check) + '</p><div data-save-strip></div></section>';
+    }).join('');
+
+  var PF = document.querySelectorAll('#profile [data-b]');
+  function key(scope, k) { return scope + ':' + k; }
+  function cur(b) { return b.item ? +(document.getElementById(b.id + '-sel').value || 1) : 0; }
+  function scopeOf(b) { return b.id + (b.item ? '-L' + cur(b) : ''); }
+  function bind(el, scope) {
+    var k = key(scope, el.dataset.b), v = data[k];
+    if (el.type === 'checkbox') el.checked = !!v; else el.value = v === undefined ? '' : v;
+  }
+  function profile() { var p = {}; PROFILE.forEach(function (f) { p[f.k] = data[key('p', f.k)] || ''; }); return p; }
+  function values(b) {
+    var v = {}, s = scopeOf(b);
+    Object.keys(data).forEach(function (k) { if (k.indexOf(s + ':') === 0) v[k.slice(s.length + 1)] = data[k]; });
+    return v;
+  }
+  function lessonCount() { var n = parseInt(data['b2:count'], 10); return n > 0 && n <= 20 ? n : 5; }
+  function fillSelectors() {
+    B.forEach(function (b) {
+      if (!b.item) return;
+      var sel = document.getElementById(b.id + '-sel'), was = sel.value || '1', n = lessonCount(), h = '';
+      for (var i = 1; i <= n; i++) {
+        var t = data['b3-L' + i + ':title'];
+        h += '<option value="' + i + '">Lesson ' + i + (t ? ': ' + esc(t) : '') + '</option>';
+      }
+      sel.innerHTML = h; sel.value = +was <= n ? was : '1';
+    });
+  }
+  function render(b) {
+    var v = values(b), outs = b.out(v, profile(), cur(b));
+    document.getElementById(b.id + '-outs').innerHTML = outs.map(function (o, j) {
+      var id = b.id + '-o' + j;
+      return '<div class="bd-out-h"><b id="' + id + '-l">' + esc(o.label) + '</b><button type="button" class="btn sec bd-copy" data-t="' + id + '">Copy</button></div>' +
+        '<textarea class="bd-out" id="' + id + '" aria-labelledby="' + id + '-l" spellcheck="false">' + esc(o.text) + '</textarea>';
+    }).join('') + '<p class="bd-note">You can edit the prompt above before copying. Edits reset if you change the form.</p>';
+    var w = document.getElementById(b.id + '-warn');
+    if (b.warn) { var r = b.warn(v); w.hidden = false; w.className = 'iw-result bd-warn ' + r[0]; w.textContent = r[1]; }
+  }
+  function load(b) { document.querySelectorAll('#' + b.id + ' .bd-fields [data-b]').forEach(function (el) { bind(el, scopeOf(b)); }); render(b); }
+  function save() { FAI.store.set('build', data); status.textContent = '✓ Saved in this browser at ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) + '.'; }
+
+  PF.forEach(function (el) { bind(el, 'p'); });
+  fillSelectors();
+  B.forEach(load);
+
+  root.addEventListener('input', onEdit); root.addEventListener('change', onEdit);
+  function onEdit(e) {
+    var el = e.target;
+    if (el.classList.contains('bd-sel')) { var b0 = B.filter(function (x) { return x.id + '-sel' === el.id; })[0]; load(b0); return; }
+    if (!el.dataset || !el.dataset.b) return;
+    if (e.type === 'change' && el.tagName !== 'SELECT' && el.type !== 'checkbox' && el.type !== 'number') return;
+    var sec = el.closest('.bd-sec'), scope = sec.id === 'profile' ? 'p' : scopeOf(B.filter(function (x) { return x.id === sec.id; })[0]);
+    data[key(scope, el.dataset.b)] = el.type === 'checkbox' ? el.checked : el.value;
+    if (scope === 'p') B.forEach(render);
+    else {
+      render(B.filter(function (x) { return x.id === sec.id; })[0]);
+      if (sec.id === 'b2' && el.dataset.b === 'count') fillSelectors();
+      if (sec.id === 'b3' && el.dataset.b === 'title') { fillSelectors(); }
+    }
+    clearTimeout(tmr); tmr = setTimeout(save, 400);
+  }
+  root.addEventListener('click', function (e) {
+    var b = e.target.closest('.bd-copy'); if (!b) return;
+    var t = document.getElementById(b.dataset.t);
+    (navigator.clipboard ? navigator.clipboard.writeText(t.value) : Promise.reject()).then(function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1500); },
+      function () { t.select(); b.textContent = 'Press Ctrl+C'; });
+  });
+})();
+</script>
+</body>
+</html>

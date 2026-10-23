@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Integration Portfolio | Faculty AI Integration Studio</title>
+<meta name="description" content="Eight artifact templates, a rubric self-check, and a readiness comparison. Your entries save in this browser and export to Word or PDF.">
+<link rel="stylesheet" href="fai.css">
+<style>
+.pf-art { background: var(--card); border: 1px solid var(--border); border-left: 6px solid var(--accent); border-radius: 4px; padding: 1.2rem 1.3rem; margin: 2rem 0; }
+.pf-art h2 { font-size: 1.35rem; color: var(--ink); margin: .2rem 0 .3rem; }
+.pf-art .pf-from { font-family: var(--sans); font-size: .8rem; color: var(--muted); margin-bottom: .8rem; }
+.pf-art .pf-from a { font-weight: 700; }
+.pf-meter { display: inline-block; font-family: var(--sans); font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .15rem .55rem; border-radius: 10px; background: var(--alt); color: var(--ink-mid); margin-left: .4rem; vertical-align: middle; }
+.pf-meter.full { background: var(--correct-bg); color: var(--correct); }
+.pf-f { margin: .8rem 0; font-family: var(--sans); }
+.pf-f > label, .pf-f > .pf-l { display: block; font-weight: 700; font-size: .86rem; color: var(--ink); margin-bottom: .25rem; }
+.pf-f .pf-h { display: block; font-weight: 400; font-size: .78rem; color: var(--muted); }
+.pf-f input[type=text], .pf-f textarea, .pf-f select, .pf-tbl input, .pf-tbl select, .pf-tbl textarea { width: 100%; font: inherit; font-size: .88rem; padding: .45rem .5rem; border: 1px solid var(--border); border-radius: 3px; background: #fff; }
+.pf-f textarea { min-height: 4.2rem; resize: vertical; }
+.pf-tbl { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: .82rem; }
+.pf-tbl th { background: var(--ink); color: #fff; text-align: left; padding: .4rem .5rem; font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; }
+.pf-tbl td { border-bottom: 1px solid var(--border); padding: .3rem; vertical-align: top; }
+.pf-tbl td.rl { font-weight: 700; color: var(--ink); width: 9.5rem; padding-top: .55rem; }
+.pf-tbl textarea { min-height: 2.6rem; }
+.pf-checks { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: .3rem .9rem; }
+.pf-checks label { font-size: .86rem; display: flex; gap: .45rem; align-items: flex-start; font-weight: 400; color: var(--text); }
+.pf-checks input { margin-top: .25rem; accent-color: var(--ink); }
+.pf-status { font-family: var(--sans); font-size: .84rem; color: var(--correct); min-height: 1.2em; }
+.pf-rub td, .pf-rub th { font-size: .8rem; }
+.pf-rub td:first-child { font-weight: 700; color: var(--ink); width: 11rem; }
+.pf-rub label { display: flex; gap: .35rem; align-items: flex-start; cursor: pointer; }
+.pf-rub input { margin-top: .2rem; accent-color: var(--ink); }
+.pf-growth { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 1.2rem; align-items: center; background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1rem; font-family: var(--sans); font-size: .88rem; }
+.pf-growth canvas { width: 100%; height: 340px; }
+.pf-key { display: inline-flex; align-items: center; gap: .35rem; margin-right: 1rem; font-weight: 700; }
+.pf-key i { width: 22px; height: 0; border-top: 3px solid; display: inline-block; }
+@media (max-width: 720px) { .pf-growth { grid-template-columns: 1fr; } .pf-tbl td.rl { width: auto; } }
+@media print { .pf-art { break-inside: avoid-page; border-left-width: 3px; } .pf-f textarea { min-height: 0; border: 0; padding: 0; } #export, .pf-status { display: none; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<button class="menu-btn" type="button" aria-expanded="false" aria-label="Open course menu">☰ Menu</button>
+<nav class="side" aria-label="Course navigation"><a class="side-brand" href="index.html"><span class="side-seal">AI<br>PD</span><span class="side-title">AI Integration Studio<small>8-week faculty learning studio</small></span></a><nav aria-label="Pages"><ul></ul><div class="side-group">Course</div><ul><li><a class="nl" href="index.html"><span class="nn"></span><span>Course map</span></a></li></ul><div class="side-group">Modules</div><ul><li><a class="nl" href="lesson00.html"><span class="nn">0</span><span>Orientation & readiness</span></a></li><li><a class="nl" href="lesson01.html"><span class="nn">1</span><span>AI fundamentals & human-centered use</span></a></li><li><a class="nl" href="lesson02.html"><span class="nn">2</span><span>LLMs & the AI tool ecosystem</span></a></li><li><a class="nl" href="lesson03.html"><span class="nn">3</span><span>Prompt & workflow engineering</span></a></li><li><a class="nl" href="lesson04.html"><span class="nn">4</span><span>Output, source & data validation</span></a></li><li><a class="nl" href="lesson05.html"><span class="nn">5</span><span>Materials, accessibility & copyright</span></a></li><li><a class="nl" href="lesson06.html"><span class="nn">6</span><span>Student AI literacy & activities</span></a></li><li><a class="nl" href="lesson07.html"><span class="nn">7</span><span>Assessment, grading & course policy</span></a></li><li><a class="nl" href="lesson08.html"><span class="nn">8</span><span>Ethics, equity & implementation</span></a></li></ul><div class="side-group">Toolkit</div><ul><li><a class="nl" href="builders.html"><span class="nn">B</span><span>Course Build Studio</span></a></li><li><a class="nl" href="portfolio.html" aria-current="page"><span class="nn">★</span><span>AI Integration Portfolio</span></a><div class="toc"><a href="#how">How it works</a><a href="#a1">1 Opportunity-risk map</a><a href="#a2">2 Tool scorecard</a><a href="#a3">3 Workflow</a><a href="#a4">4 Validation audit</a><a href="#a5">5 Instructional material</a><a href="#a6">6 Student activity</a><a href="#a7">7 Assessment & policy</a><a href="#a8">8 Ethics & pilot</a><a href="#rubric">Rubric self-check</a><a href="#growth">Readiness growth</a><a href="#export">Export</a></div></li><li><a class="nl" href="facilitator.html"><span class="nn">F</span><span>Facilitator guide</span></a></li><li><a class="nl" href="resources.html"><span class="nn">R</span><span>Resource kit & sources</span></a></li></ul></nav><div class="side-prog" data-prog-box role="status"><span class="sp-status"></span><button type="button" class="sp-link" data-prog="open">Open progress file</button><input type="file" accept=".json,application/json" class="sr" data-prog-input tabindex="-1" aria-hidden="true"></div></nav>
+<div class="page">
+
+<header class="lesson-hero"><div class="lesson-hero-inner">
+<p class="crumb"><a href="index.html">Course map</a> &rsaquo; <span>Portfolio</span></p>
+<span class="badge-lg">Capstone · builds across 8 weeks</span>
+<h1>AI Integration <span>Portfolio</span></h1>
+<p class="lede"><span class="dq">The standard</span>Completion means implementation readiness, not advocacy for AI. A well-supported decision to keep a non-AI workflow can meet the standard.</p>
+<div class="chips"><span class="chip">Artifacts: <strong>8</strong></span><span class="chip">Built: <strong>a teachable unit</strong></span><span class="chip">Rubric: <strong>6 criteria × 4 levels</strong></span><span class="chip">Saves: <strong>this browser only</strong></span><span class="chip">Export: <strong>Word, PDF, backup file</strong></span></div>
+</div></header>
+<main class="wrap" id="main">
+<section class="block" id="how"><p class="eyebrow">How it works</p><h2 class="h2">One course, eight artifacts, one plan</h2><div class="rule"></div>
+<p>Each module adds one artifact. Four of them also record your course build deliverables from the <a href="builders.html">Course Build Studio</a>: the repository, the unit framework, the lessons, and the activities. Fill in the template after the module's fieldwork. Entries save automatically in this browser as you type. They are not sent anywhere. Select <b>Save progress</b> under any artifact to keep everything in one file you can open on any computer.</p>
+<div class="callout guard"><b class="lbl">Responsible use</b><p>Do not enter identifiable student information, grades, or confidential records here. Describe students in general terms ("a multilingual first-year student"), and use fictional or de-identified examples.</p></div>
+<div data-save-strip="open"></div>
+<p class="pf-status" id="pf-status" aria-live="polite"></p>
+</section>
+<div id="pf-forms"></div>
+<section class="block" id="rubric"><p class="eyebrow">Rubric self-check</p><h2 class="h2">Is your portfolio pilot ready?</h2><div class="rule"></div>
+<p>Rate your whole portfolio on each criterion. Pilot ready on all six is the completion standard. Your facilitator and a peer use the same rubric.</p>
+<div class="tscroll"><table class="t pf-rub" id="pf-rub"></table></div>
+<div class="iw-result" id="pf-rub-res" aria-live="polite">Choose a level for each criterion.</div>
+<div data-save-strip></div>
+</section>
+<section class="block" id="growth"><p class="eyebrow">Readiness growth</p><h2 class="h2">Starting point and end of program</h2><div class="rule"></div>
+<p>This chart reads the readiness inventory from <a href="lesson00.html">Orientation</a>. Take it once before Week 1 and again after Module 8 using the "End of program" mode.</p>
+<div class="pf-growth"><canvas id="pf-radar" height="340" aria-label="Radar chart comparing starting and end-of-program readiness ratings" role="img"></canvas><div id="pf-growth-txt"></div></div>
+</section>
+<section class="block" id="export"><p class="eyebrow">Export</p><h2 class="h2">Take your portfolio with you</h2><div class="rule"></div>
+<div class="iw-row"><button class="btn" type="button" id="pf-doc">Download Word file</button><button class="btn sec" type="button" onclick="window.print()">Print or save as PDF</button><button class="btn sec" type="button" id="pf-json">Save progress file</button><button class="btn sec" type="button" id="pf-import">Open progress file</button><button class="btn sec" type="button" id="pf-clear">Clear all entries</button></div>
+<p style="margin-top:.8rem;font-family:var(--sans);font-size:.86rem;color:var(--muted)">The Word file opens in Microsoft Word, Google Docs, or LibreOffice. Run your institution's accessibility checker before sharing it.</p>
+</section>
+<nav class="pager" aria-label="Pager"><a href="builders.html"><span class="dir">← Previous</span><span class="nm">Course Build Studio</span></a><a class="next" href="facilitator.html"><span class="dir">Facilitator guide →</span><span class="nm">For leads and co-facilitators</span></a></nav>
+</main>
+
+<footer class="foot">Faculty AI Integration Studio · Institution-neutral faculty professional development · Content verified 2026-10-22. Check dated callouts before each delivery.</footer>
+</div>
+<script src="fai.js"></script>
+<script>
+(function () {
+  var AREAS = ['Preparation', 'Instruction', 'Student learning', 'Feedback', 'Assessment', 'Administration', 'Accessibility'];
+  var CRIT = ['Purpose and learning alignment', 'Evidence and reliability', 'Privacy and security', 'Accessibility', 'Equity and access', 'Transparency and control', 'Cost and sustainability', 'Integration and support'];
+  var A = [
+    { id: 'a1', m: 1, t: 'Opportunity-risk map and pilot problem statement', f: [
+      { k: 'course', l: 'Course', h: 'Number, title, level, modality, typical enrollment', type: 'text' },
+      { k: 'map', l: 'Opportunity-risk map', type: 'table', rows: AREAS, cols: [['opp', 'Opportunity', 'area'], ['risk', 'Risk', 'area'], ['call', 'Call', ['', 'Explore', 'Watch', 'Keep human']]] },
+      { k: 'problem', l: 'Pilot problem statement', h: 'One low- or moderate-stakes teaching problem worth investigating', type: 'area' },
+      { k: 'success', l: 'Success criterion', h: 'How you will know the problem is better solved', type: 'area' },
+      { k: 'workflow', l: 'Current workflow', h: 'How you do this today, step by step', type: 'area' },
+      { k: 'human', l: 'What must remain under human control', type: 'area' } ] },
+    { id: 'a2', m: 2, t: 'Tool-evaluation scorecard and decision', f: [
+      { k: 'tools', l: 'Tools compared', h: 'Two institution-approved tools or tool categories', type: 'text' },
+      { k: 'score', l: 'Scorecard (0 = fails, 3 = strong)', type: 'table', rows: CRIT, cols: [['a', 'Tool A', ['', '0', '1', '2', '3']], ['b', 'Tool B', ['', '0', '1', '2', '3']], ['note', 'Evidence and notes', 'area']] },
+      { k: 'stops', l: 'Hard stops checked', type: 'checks', opts: ['Approved for the data I would use', 'Meets accessibility requirements', 'No-cost path for every student', 'Instructor can review and override output'] },
+      { k: 'decision', l: 'Decision', type: 'select', opts: ['', 'Use', 'Pilot cautiously', 'Reject'] },
+      { k: 'why', l: 'Justification', h: 'Name the criteria that decided it, including any hard stop', type: 'area' },
+      { k: 'repo', l: 'Course build: repository', h: 'Where the project space lives, files uploaded, and the grounding-test result (Builder 1)', type: 'area' } ] },
+    { id: 'a3', m: 3, t: 'Reusable prompt or workflow with iteration log', f: [
+      { k: 'task', l: 'Authentic task', h: 'For example: discussion questions, worked examples, reading-level adaptation, case construction, formative feedback', type: 'text' },
+      { k: 'spec', l: 'Prompt specification', type: 'table', rows: ['Goal', 'Context', 'Source material', 'Constraints', 'Desired process', 'Output format', 'Quality criteria', 'Validation instructions'], cols: [['v', 'Your specification', 'area']] },
+      { k: 'log', l: 'Iteration log', type: 'table', rows: ['Run 1', 'Run 2', 'Run 3'], cols: [['out', 'What the output got wrong', 'area'], ['fix', 'Diagnosis and revision', 'area']] },
+      { k: 'final', l: 'Final human-edited result (or where it is saved)', type: 'area' },
+      { k: 'review', l: 'Required human review', h: 'Who checks what before anything reaches students', type: 'area' },
+      { k: 'frame', l: 'Course build: unit framework', h: 'Where the final framework is saved and what you changed after the check prompt and TRACE (Builder 2)', type: 'area' } ] },
+    { id: 'a4', m: 4, t: 'Annotated validation audit and TRACE checklist', f: [
+      { k: 'output', l: 'Output audited', h: 'What it is and where it would be used', type: 'area' },
+      { k: 'stakes', l: 'Stakes', type: 'select', opts: ['', 'Low', 'Moderate', 'High'] },
+      { k: 'claims', l: 'Claim table', type: 'table', rows: ['Claim 1', 'Claim 2', 'Claim 3', 'Claim 4', 'Claim 5', 'Claim 6', 'Claim 7', 'Claim 8'], cols: [['c', 'Claim, number, or citation', 'area'], ['s', 'Status', ['', 'Verified', 'Revised', 'Removed', 'Unresolved']], ['e', 'Evidence', 'area']] },
+      { k: 'decision', l: 'Decision and explanation', h: 'Use, revise, or reject, and why', type: 'area' },
+      { k: 'trace', l: 'My TRACE checklist', h: 'Add the checks your discipline needs, such as units, dates, or dosage', type: 'area' } ] },
+    { id: 'a5', m: 5, t: 'Accessible instructional material with quality-assurance record', f: [
+      { k: 'outcome', l: 'Learning outcome it supports', type: 'text' },
+      { k: 'item', l: 'The item', h: 'What it is, and where the classroom-ready version is saved', type: 'area' },
+      { k: 'ai', l: 'What AI contributed', type: 'area' },
+      { k: 'human', l: 'Substantive human revisions', type: 'area' },
+      { k: 'a11y', l: 'Accessibility and UDL checks', type: 'checks', opts: ['Headings use real heading styles', 'Images have meaningful alt text', 'Color is not the only signal', 'Contrast checked', 'Reading level fits the audience', 'Video or audio is captioned or transcribed', 'Links describe their destination', 'Examples represent varied learners', 'Offered in more than one format'] },
+      { k: 'sources', l: 'Sources and copyright notes', type: 'area' },
+      { k: 'disclose', l: 'AI-use disclosure statement', type: 'area' },
+      { k: 'lessons', l: 'Course build: lessons (Builder 3)', type: 'table', rows: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5', 'Lesson 6'], cols: [['where', 'Title and where saved', 'area'], ['changed', 'What you revised', 'area'], ['st', 'Status', ['', 'Drafted', 'Checked', 'Revised', 'Ready to teach']]] } ] },
+    { id: 'a6', m: 6, t: 'Student AI-literacy activity and facilitation guide', f: [
+      { k: 'outcome', l: 'Learning outcome', type: 'text' },
+      { k: 'length', l: 'Length and setting', h: '20 to 40 minutes; in class or online', type: 'text' },
+      { k: 'roles', l: 'Responsibility map', type: 'table', rows: ['AI role', 'Student role', 'Instructor role'], cols: [['v', 'Description', 'area']] },
+      { k: 'verify', l: 'Verification step', type: 'area' },
+      { k: 'evidence', l: 'Evidence of learning collected', type: 'area' },
+      { k: 'disclose', l: 'Disclosure expectation', type: 'area' },
+      { k: 'access', l: 'Accessibility provision', type: 'area' },
+      { k: 'noai', l: 'No-AI fallback', type: 'area' },
+      { k: 'debrief', l: 'Metacognitive debrief questions', type: 'area' },
+      { k: 'acts', l: 'Course build: activities (Builder 4)', type: 'table', rows: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5', 'Lesson 6'], cols: [['what', 'Activity and AI role', 'area'], ['tried', 'Tried it as a student? What changed', 'area'], ['st', 'Status', ['', 'Drafted', 'Checked', 'Revised', 'Ready to teach']]] } ] },
+    { id: 'a7', m: 7, t: 'Revised assessment, rubric, AI-use directions, and course policy', f: [
+      { k: 'assign', l: 'Assignment and the outcome it measures', type: 'area' },
+      { k: 'level', l: 'AI Assessment Scale level', type: 'select', opts: ['', '1 No AI', '2 AI-Assisted Planning', '3 AI-Assisted Task Completion', '4 Full AI', '5 AI Exploration'] },
+      { k: 'levelwhy', l: 'Why this level fits the outcome', type: 'area' },
+      { k: 'moves', l: 'Redesign moves used', type: 'checks', opts: ['Staged submissions', 'Annotated drafts', 'Local or personal context', 'Oral explanation', 'In-class checkpoint', 'Process notes', 'Source verification', 'AI interaction record', 'Reflective defense'] },
+      { k: 'rubric', l: 'Rubric changes', type: 'area' },
+      { k: 'task', l: 'Task-level AI-use directions and disclosure method', type: 'area' },
+      { k: 'appeal', l: 'Student clarification or appeal pathway', type: 'area' },
+      { k: 'policy', l: 'Course AI policy (expectations and rationale)', type: 'area' } ] },
+    { id: 'a8', m: 8, t: 'Ethics decision record and 30-day pilot plan', f: [
+      { k: 'case', l: 'Ethics decision: the situation', type: 'area' },
+      { k: 'stake', l: 'Stakeholders affected', type: 'area' },
+      { k: 'tension', l: 'Principles in tension', type: 'area' },
+      { k: 'decision', l: 'Decision and rationale', type: 'area' },
+      { k: 'revisit', l: 'Revisit if', h: 'The signal that would change your decision', type: 'area' },
+      { k: 'pilot', l: '30-day pilot plan', type: 'table', rows: ['Learning problem', 'Participants', 'Approved tool', 'Human checkpoints', 'Data boundaries', 'Evidence of effectiveness', 'Student communication', 'Fallback plan', 'Stop conditions'], cols: [['v', 'Plan', 'area']] },
+      { k: 'dates', l: 'Review dates', h: '30-day check and 60 to 90-day review', type: 'text' } ] }
+  ];
+  var RUB = [
+    ['Learning alignment', 'The artifact directly supports a named learning outcome or authentic faculty task; AI is not included merely for novelty.'],
+    ['Disciplinary quality', 'Content is accurate, appropriately complex, current where needed, and reviewed by the faculty member.'],
+    ['Validation', 'Claims, citations, calculations, and assumptions are checked; limitations and unresolved uncertainty are visible.'],
+    ['Human agency', 'Human and AI responsibilities are explicit; consequential decisions remain reviewable and overridable.'],
+    ['Inclusion and governance', 'Privacy, accessibility, equity, student choice, copyright, and institutional policy are addressed.'],
+    ['Feasibility and evidence', 'The plan identifies time, access, support, fallback procedures, and evidence that decides whether the pilot continues.']
+  ];
+  var LV = ['Not yet ready', 'Developing', 'Pilot ready', 'Shareable model'];
+  var CAPS = ['Concepts', 'Intent', 'Tools', 'Prompts', 'Validation', 'Pedagogy', 'Assessment', 'Ethics'];
+  var data = FAI.store.get('portfolio', {}), status = document.getElementById('pf-status'), tmr;
+  var esc = FAI.esc;
+
+  function fieldHtml(a, f) {
+    var id = a.id + '-' + f.k, h = f.h ? '<span class="pf-h">' + esc(f.h) + '</span>' : '';
+    if (f.type === 'text') return '<div class="pf-f"><label for="' + id + '">' + esc(f.l) + h + '</label><input type="text" id="' + id + '" data-k="' + id + '"></div>';
+    if (f.type === 'area') return '<div class="pf-f"><label for="' + id + '">' + esc(f.l) + h + '</label><textarea id="' + id + '" data-k="' + id + '"></textarea></div>';
+    if (f.type === 'select') return '<div class="pf-f"><label for="' + id + '">' + esc(f.l) + h + '</label><select id="' + id + '" data-k="' + id + '">' + f.opts.map(function (o) { return '<option value="' + esc(o) + '">' + (o ? esc(o) : 'Choose…') + '</option>'; }).join('') + '</select></div>';
+    if (f.type === 'checks') return '<div class="pf-f"><span class="pf-l">' + esc(f.l) + h + '</span><div class="pf-checks">' + f.opts.map(function (o, i) { return '<label><input type="checkbox" data-k="' + id + '-' + i + '"> ' + esc(o) + '</label>'; }).join('') + '</div></div>';
+    if (f.type === 'table') {
+      var head = '<tr><th scope="col"><span class="sr">Row</span></th>' + f.cols.map(function (c) { return '<th scope="col">' + esc(c[1]) + '</th>'; }).join('') + '</tr>';
+      var body = f.rows.map(function (r, ri) {
+        return '<tr><td class="rl" scope="row">' + esc(r) + '</td>' + f.cols.map(function (c) {
+          var k = id + '-' + ri + '-' + c[0], lab = esc(r + ', ' + c[1]);
+          if (Array.isArray(c[2])) return '<td><select data-k="' + k + '" aria-label="' + lab + '">' + c[2].map(function (o) { return '<option value="' + esc(o) + '">' + (o || '–') + '</option>'; }).join('') + '</select></td>';
+          return '<td><textarea data-k="' + k + '" aria-label="' + lab + '"></textarea></td>';
+        }).join('') + '</tr>';
+      }).join('');
+      return '<div class="pf-f"><span class="pf-l">' + esc(f.l) + h + '</span><div class="tscroll"><table class="pf-tbl">' + head + body + '</table></div></div>';
+    }
+    return '';
+  }
+  document.getElementById('pf-forms').innerHTML = A.map(function (a, i) {
+    return '<section class="pf-art" id="' + a.id + '"><p class="eyebrow">Artifact ' + (i + 1) + ' of 8 <span class="pf-meter" id="' + a.id + '-meter"></span></p><h2>' + esc(a.t) + '</h2>' +
+      '<p class="pf-from">Built in <a href="lesson0' + a.m + '.html#fieldwork">Module ' + a.m + ' fieldwork</a></p>' + a.f.map(function (f) { return fieldHtml(a, f); }).join('') + '<div data-save-strip></div></section>';
+  }).join('');
+
+  var inputs = document.querySelectorAll('[data-k]');
+  inputs.forEach(function (el) {
+    var v = data[el.dataset.k];
+    if (v !== undefined) { if (el.type === 'checkbox') el.checked = !!v; else el.value = v; }
+    el.addEventListener(el.tagName === 'SELECT' || el.type === 'checkbox' ? 'change' : 'input', function () {
+      data[el.dataset.k] = el.type === 'checkbox' ? el.checked : el.value;
+      clearTimeout(tmr); tmr = setTimeout(save, 400);
+    });
+  });
+  function filled(prefix) {
+    var all = document.querySelectorAll('#' + prefix + ' [data-k]'), n = 0, t = 0, seen = {};
+    all.forEach(function (el) {
+      var top = el.dataset.k.split('-').slice(0, 2).join('-'); if (seen[top] === undefined) { seen[top] = false; t++; }
+      if ((el.type === 'checkbox' && el.checked) || (el.type !== 'checkbox' && el.value.trim())) { if (!seen[top]) { seen[top] = true; n++; } }
+    });
+    return [n, t];
+  }
+  function meters() {
+    A.forEach(function (a) {
+      var r = filled(a.id), m = document.getElementById(a.id + '-meter');
+      m.textContent = r[0] + ' of ' + r[1] + ' parts started'; m.classList.toggle('full', r[0] === r[1]);
+    });
+  }
+  function save() { FAI.store.set('portfolio', data); status.textContent = '✓ Saved in this browser at ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) + '.'; meters(); }
+  meters();
+
+  /* rubric */
+  var rub = document.getElementById('pf-rub');
+  rub.innerHTML = '<thead><tr><th scope="col">Criterion</th><th scope="col">Pilot-ready evidence</th>' + LV.map(function (l) { return '<th scope="col">' + l + '</th>'; }).join('') + '</tr></thead><tbody>' +
+    RUB.map(function (r, i) { return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td>' + LV.map(function (l, j) { return '<td><label><input type="radio" name="rub' + i + '" value="' + j + '" aria-label="' + r[0] + ': ' + l + '"><span class="sr">' + l + '</span></label></td>'; }).join('') + '</tr>'; }).join('') + '</tbody>';
+  function rubRes() {
+    var vals = RUB.map(function (r, i) { var c = rub.querySelector('input[name="rub' + i + '"]:checked'); return c ? +c.value : -1; });
+    var done = vals.filter(function (v) { return v >= 0; }).length, ready = vals.filter(function (v) { return v >= 2; }).length;
+    var el = document.getElementById('pf-rub-res');
+    if (done < 6) { el.className = 'iw-result'; el.textContent = 'Rated ' + done + ' of 6 criteria. Pilot ready or above on ' + ready + '.'; return; }
+    var low = RUB.filter(function (r, i) { return vals[i] < 2; }).map(function (r) { return r[0]; });
+    if (!low.length) { el.className = 'iw-result ok'; el.textContent = '✓ Pilot ready on all six criteria. Ask a peer to confirm with the same rubric before you launch.'; }
+    else { el.className = 'iw-result warn'; el.textContent = '⚠ Pilot ready on ' + ready + ' of 6. Strengthen: ' + low.join(', ') + '. Revisit the matching module and its artifact.'; }
+  }
+  var rv = data.rubric || [];
+  rv.forEach(function (v, i) { if (v >= 0) { var r = rub.querySelector('input[name="rub' + i + '"][value="' + v + '"]'); if (r) r.checked = true; } });
+  rub.addEventListener('change', function () { data.rubric = RUB.map(function (r, i) { var c = rub.querySelector('input[name="rub' + i + '"]:checked'); return c ? +c.value : -1; }); save(); rubRes(); });
+  rubRes();
+
+  /* readiness growth */
+  function growth() {
+    var r = FAI.store.get('readiness', {}), s = [], txt = document.getElementById('pf-growth-txt');
+    if (r.pre) s.push({ values: r.pre.map(function (v) { return v / 4; }), color: '#5d5878', fill: 'rgba(93,88,120,.12)', dash: true });
+    if (r.post) s.push({ values: r.post.map(function (v) { return v / 4; }), color: '#b4410c', fill: 'rgba(180,65,12,.14)' });
+    FAI.radar(document.getElementById('pf-radar'), CAPS, s);
+    if (!r.pre && !r.post) { txt.innerHTML = '<p>No readiness ratings saved yet in this browser. Take the inventory in <a href="lesson00.html">Orientation</a>.</p>'; return; }
+    var h = '<p><span class="pf-key"><i style="border-color:#5d5878;border-top-style:dashed"></i>Starting point</span><span class="pf-key"><i style="border-color:#b4410c"></i>End of program</span></p>';
+    if (r.pre && r.post) {
+      var d = CAPS.map(function (c, i) { return [c, r.post[i] - r.pre[i]]; }).sort(function (a, b) { return b[1] - a[1]; });
+      h += '<p><b>Largest growth:</b> ' + d.slice(0, 2).map(function (x) { return x[0] + ' (' + (x[1] >= 0 ? '+' : '') + x[1] + ')'; }).join(', ') + '.</p><p><b>Still developing:</b> ' + CAPS.filter(function (c, i) { return r.post[i] <= 2; }).join(', ') + (CAPS.some(function (c, i) { return r.post[i] <= 2; }) ? '.' : 'none rated 2 or below.') + '</p>';
+    } else h += '<p>' + (r.pre ? 'Starting point saved. Retake the inventory after Module 8 in "End of program" mode to see growth.' : 'End-of-program ratings saved without a starting point.') + '</p>';
+    h += '<p style="color:var(--muted);font-size:.8rem">Self-ratings show confidence, not proof. The portfolio artifacts are the evidence.</p>';
+    txt.innerHTML = h;
+  }
+  growth(); window.addEventListener('resize', growth);
+
+  /* export */
+  function dl(name, type, content) { var b = new Blob([content], { type: type }), a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  function val(k) { var v = data[k]; return v === undefined || v === '' || v === false ? '' : v; }
+  document.getElementById('pf-doc').addEventListener('click', function () {
+    var h = '<html><head><meta charset="utf-8"><title>AI Integration Portfolio</title><style>body{font-family:Calibri,Arial,sans-serif;font-size:11pt}h1{font-size:20pt}h2{font-size:14pt;margin-top:18pt}h3{font-size:11pt;margin:10pt 0 2pt}table{border-collapse:collapse;width:100%}th,td{border:1px solid #888;padding:4pt;vertical-align:top;text-align:left}th{background:#e4e1f3}</style></head><body><h1>AI Integration Portfolio</h1><p>Exported ' + new Date().toLocaleDateString() + '</p>';
+    var loc = FAI.store.get('local', {}), lh = '';
+    FAI.LOCAL.forEach(function (g) { g[1].forEach(function (f) { if (loc[f[0]]) lh += '<tr><th>' + esc(f[1]) + '</th><td>' + esc(loc[f[0]]) + '</td></tr>'; }); });
+    if (lh) h += '<h2>Institution and local policies</h2><table>' + lh + '</table>';
+    A.forEach(function (a, i) {
+      h += '<h2>Artifact ' + (i + 1) + ': ' + esc(a.t) + '</h2>';
+      a.f.forEach(function (f) {
+        var id = a.id + '-' + f.k; h += '<h3>' + esc(f.l) + '</h3>';
+        if (f.type === 'table') { h += '<table><tr><th></th>' + f.cols.map(function (c) { return '<th>' + esc(c[1]) + '</th>'; }).join('') + '</tr>' + f.rows.map(function (r, ri) { return '<tr><th>' + esc(r) + '</th>' + f.cols.map(function (c) { return '<td>' + esc(val(id + '-' + ri + '-' + c[0])).replace(/\n/g, '<br>') + '</td>'; }).join('') + '</tr>'; }).join('') + '</table>'; }
+        else if (f.type === 'checks') { h += '<ul>' + f.opts.map(function (o, oi) { return '<li>' + (val(id + '-' + oi) ? '[x] ' : '[ ] ') + esc(o) + '</li>'; }).join('') + '</ul>'; }
+        else h += '<p>' + (esc(val(id)).replace(/\n/g, '<br>') || '<i>Not yet completed</i>') + '</p>';
+      });
+    });
+    var rr = data.rubric || [];
+    h += '<h2>Rubric self-check</h2><table><tr><th>Criterion</th><th>Self-rating</th></tr>' + RUB.map(function (r, i) { return '<tr><td>' + r[0] + '</td><td>' + (rr[i] >= 0 ? LV[rr[i]] : 'Not rated') + '</td></tr>'; }).join('') + '</table></body></html>';
+    dl('AI-Integration-Portfolio.doc', 'application/msword', h);
+  });
+  document.getElementById('pf-json').addEventListener('click', function () { FAI.progress.save(); });
+  document.getElementById('pf-import').addEventListener('click', function () { FAI.progress.open(); });
+  document.getElementById('pf-clear').addEventListener('click', function () {
+    if (!confirm('Clear every portfolio entry in this browser? Save your progress file first if you may need it.')) return;
+    data = {}; FAI.store.set('portfolio', data); location.reload();
+  });
+})();
+</script>
+</body>
+</html>

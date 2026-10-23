@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1: AI Fundamentals and Human-Centered Use | Faculty AI Integration Studio</title>
+<meta name="description" content="Where can AI improve learning or faculty work without displacing the essential human contribution?">
+<link rel="stylesheet" href="fai.css">
+<style>#w1a .w1a-top { display: flex; justify-content: space-between; gap: .6rem; flex-wrap: wrap; font-size: .8rem; color: var(--text-2); margin-bottom: .35rem; }
+#w1a .w1a-prog { font-weight: 700; color: var(--ink); }
+#w1a .w1a-meter { margin-bottom: .8rem; }
+#w1a .w1a-card { border: 1px solid var(--border); border-top: 4px solid var(--accent); border-radius: 4px; padding: 1rem 1.1rem; background: #fff; min-height: 5.2rem; display: flex; align-items: center; margin-bottom: .8rem; }
+#w1a .w1a-case { font-family: var(--serif); font-size: 1.05rem; line-height: 1.45; color: var(--text); }
+#w1a .w1a-choices .ch { flex: 1 1 12rem; }
+#w1a .w1a-choices .ch.w1a-right { border-color: var(--correct); background: var(--correct-bg); color: var(--correct); }
+#w1a .w1a-choices .ch.w1a-wrong { border-color: var(--wrong); background: var(--wrong-bg); color: var(--wrong); }
+#w1a .w1a-sum { list-style: none; margin-top: .5rem; }
+#w1a .w1a-sum li { padding: .2rem 0; border-bottom: 1px solid var(--border); font-size: .84rem; }
+#w1b .w1b-prompt { font-family: var(--mono); font-size: .95rem; background: #f1f0f8; border: 1px solid var(--border); border-radius: 4px; padding: .7rem .9rem; margin: .8rem 0; }
+#w1b .w1b-prompt span { background: var(--accent-pale); border-bottom: 2px solid var(--accent); padding: 0 .3rem; }
+#w1b .w1b-stage { border-top: 1px solid var(--border); padding: .7rem 0; }
+#w1b .w1b-h { font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
+#w1b .w1b-bar { display: grid; grid-template-columns: 7.5rem minmax(0,1fr) 3.4rem; gap: .5rem; align-items: center; margin-bottom: .3rem; font-size: .84rem; }
+#w1b .w1b-bar .w { font-family: var(--mono); text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#w1b .w1b-bar .meter { height: 16px; }
+#w1b .w1b-bar .meter > i { background: var(--ink-mid); }
+#w1b .w1b-bar.top .meter > i { background: var(--accent); }
+#w1b .w1b-bar .n { font-family: var(--narrow); font-weight: 700; }
+#w1b .w1b-temp { margin: .7rem 0; }
+#w1b .w1b-temp label { font-weight: 700; color: var(--ink); }
+#w1b .w1b-scale { display: flex; justify-content: space-between; font-size: .72rem; color: var(--muted); }
+#w1b .w1b-runs { margin-top: .6rem; font-size: .84rem; }
+#w1b .w1b-runs ol { list-style: none; display: flex; flex-wrap: wrap; gap: .3rem; margin: .3rem 0; }
+#w1b .w1b-runs li { font-family: var(--mono); background: var(--alt); border-radius: 3px; padding: .15rem .45rem; font-size: .78rem; }
+#w1b .w1b-runs li.flag { background: var(--wrong-bg); color: var(--wrong); }
+#w1b .w1b-runs li.flag::before { content: '\2717 '; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<button class="menu-btn" type="button" aria-expanded="false" aria-label="Open course menu">☰ Menu</button>
+<nav class="side" aria-label="Course navigation"><a class="side-brand" href="index.html"><span class="side-seal">AI<br>PD</span><span class="side-title">AI Integration Studio<small>8-week faculty learning studio</small></span></a><nav aria-label="Pages"><ul></ul><div class="side-group">Course</div><ul><li><a class="nl" href="index.html"><span class="nn"></span><span>Course map</span></a></li></ul><div class="side-group">Modules</div><ul><li><a class="nl" href="lesson00.html"><span class="nn">0</span><span>Orientation & readiness</span></a></li><li><a class="nl" href="lesson01.html" aria-current="page"><span class="nn">1</span><span>AI fundamentals & human-centered use</span></a><div class="toc"><a href="#overview">Overview</a><a href="#outcomes">Outcomes</a><a href="#terms">Key terms</a><a href="#s1">AI, machine learning, generative AI, and automation</a><a href="#s2">How a language model produces text</a><a href="#s3">Fluency is not truth</a><a href="#s4">Human-centered use: what stays human</a><a href="#s5">Choosing a pilot problem</a><a href="#studio">Live studio run sheet</a><a href="#fieldwork">Fieldwork</a><a href="#artifact">Portfolio artifact</a><a href="#check">Judgment check</a><a href="#sources">Sources</a></div></li><li><a class="nl" href="lesson02.html"><span class="nn">2</span><span>LLMs & the AI tool ecosystem</span></a></li><li><a class="nl" href="lesson03.html"><span class="nn">3</span><span>Prompt & workflow engineering</span></a></li><li><a class="nl" href="lesson04.html"><span class="nn">4</span><span>Output, source & data validation</span></a></li><li><a class="nl" href="lesson05.html"><span class="nn">5</span><span>Materials, accessibility & copyright</span></a></li><li><a class="nl" href="lesson06.html"><span class="nn">6</span><span>Student AI literacy & activities</span></a></li><li><a class="nl" href="lesson07.html"><span class="nn">7</span><span>Assessment, grading & course policy</span></a></li><li><a class="nl" href="lesson08.html"><span class="nn">8</span><span>Ethics, equity & implementation</span></a></li></ul><div class="side-group">Toolkit</div><ul><li><a class="nl" href="builders.html"><span class="nn">B</span><span>Course Build Studio</span></a></li><li><a class="nl" href="portfolio.html"><span class="nn">★</span><span>AI Integration Portfolio</span></a></li><li><a class="nl" href="facilitator.html"><span class="nn">F</span><span>Facilitator guide</span></a></li><li><a class="nl" href="resources.html"><span class="nn">R</span><span>Resource kit & sources</span></a></li></ul></nav><div class="side-prog" data-prog-box role="status"><span class="sp-status"></span><button type="button" class="sp-link" data-prog="open">Open progress file</button><input type="file" accept=".json,application/json" class="sr" data-prog-input tabindex="-1" aria-hidden="true"></div></nav>
+<div class="page">
+<header class="lesson-hero"><div class="lesson-hero-inner">
+<p class="crumb"><a href="index.html">Course map</a> &rsaquo; <span>Week 1 · Module 1</span></p>
+<span class="badge-lg">Week 1 · Module 1</span>
+<h1>AI Fundamentals and <span>Human-Centered Use</span></h1>
+<p class="lede"><span class="dq">Driving question</span>Where can AI improve learning or faculty work without displacing the essential human contribution?</p>
+<div class="chips"><span class="chip">Live studio: <strong>60 min</strong></span><span class="chip">Fieldwork: <strong>~60 min</strong></span><span class="chip">Interactives: <strong>Card sort + next-token</strong></span><span class="chip">Artifact: <strong>Opportunity-risk map</strong></span></div></div></header>
+<main class="wrap" id="main">
+<section class="block" id="overview"><p class="eyebrow">Overview</p><h2 class="h2">A durable mental model beats a product tour</h2><div class="rule"></div><p class="lead">Tools change every few months. The way they work changes much more slowly. This module gives you a plain-language model of what AI is, how a large language model produces text, and why that process makes some uses safe and others risky. With that model, you can predict how a tool will fail before it fails in front of students.</p>
+<p>You will also start the project that runs through all eight weeks. You will map where AI might help in one real course, where it could cause harm, and what must stay under your control. Then you will choose one low- or moderate-stakes teaching problem to investigate. Deciding that AI is not the right fit for that problem is a valid result.</p>
+<div class="predict"><b class="lbl">Predict before you read</b><p>You ask a chatbot the same question twice, word for word, and get two different answers. Is the tool broken? What does the difference tell you about how it works?</p><label class="sr" for="pred">Your prediction</label><textarea id="pred" placeholder="Type a short prediction. It stays in this browser."></textarea><details><summary>Compare with the answer after the lesson</summary><p>The tool is working as designed. A language model computes probabilities for the next piece of text and then samples from them, so two runs can take different paths. That is useful for brainstorming and a warning for facts. If an answer can change on a second try, a single fluent answer is not evidence that it is correct.</p></details></div>
+</section>
+<section class="block" id="outcomes"><p class="eyebrow">Learning outcomes</p><h2 class="h2">By the end of this module you will be able to</h2><div class="rule"></div><ul class="objectives"><li><strong>Distinguish</strong> AI, machine learning, generative AI, and rule-based automation using examples from your own work. <em class="bloom">Analyze</em></li><li><strong>Describe</strong> training and inference, tokens, and context at a conceptual level. <em class="bloom">Understand</em></li><li><strong>Explain</strong> why language-model output is probabilistic and what limitations follow from that. <em class="bloom">Understand</em></li><li><strong>Map</strong> opportunities and risks for AI across one of your courses. <em class="bloom">Analyze</em></li><li><strong>Select</strong> one course problem worth investigating and define what must stay under human control. <em class="bloom">Evaluate</em></li></ul></section>
+<section class="block" id="terms"><p class="eyebrow">Key terms</p><h2 class="h2">Vocabulary flashcards</h2><div class="rule"></div><p class="flip-hint-top">Say the definition to yourself first, then select the card or press Enter to check.</p><div class="vocab-grid"><button type="button" class="flip-card" aria-pressed="false"><div class="flip-inner"><div class="flip-face flip-front"><span class="vlabel">Term</span><div class="vterm">Artificial intelligence (AI)</div><span class="fhint">↻ Show definition</span></div><div class="flip-face flip-back"><span class="vlabel">Definition</span><div class="vdef">A broad field of computer systems that perform tasks usually linked to human intelligence, such as recognizing speech, classifying images, or producing text.</div></div></div></button><button type="button" class="flip-card" aria-pressed="false"><div class="flip-inner"><div class="flip-face flip-front"><span class="vlabel">Term</span><div class="vterm">Machine learning</div><span class="fhint">↻ Show definition</span></div><div class="flip-face flip-back"><span class="vlabel">Definition</span><div class="vdef">A type of AI in which a system learns patterns from examples instead of following rules a person wrote by hand.</div></div></div></button><button type="button" class="flip-card" aria-pressed="false"><div class="flip-inner"><div class="flip-face flip-front"><span class="vlabel">Term</span><div class="vterm">Generative AI</div><span class="fhint">↻ Show definition</span></div><div class="flip-face flip-back"><span class="vlabel">Definition</span><div class="vdef">Machine learning systems that produce new content, such as text, images, audio, or code, based on patterns in their training data.</div></div></div></button><button type="button" class="flip-card" aria-pressed="false"><div class="flip-inner"><div class="flip-face flip-front"><span class="vlabel">Term</span><div class="vterm">Large language model (LLM)</div><span class="fhint">↻ Show definition</span></div><div class="flip-face flip-back"><span class="vlabel">Definition</span><div class="vdef">A generative AI model trained on very large amounts of text to predict the next token in a sequence. Chat assistants are built on LLMs.</div></div></div></button><button type="button" class="flip-card" aria-pressed="false"><div class="flip-inner"><div class="flip-face flip-front"><span class="vlabel">Term</span><div class="vterm">Token</div><span class="fhint">↻ Show definition</span></div><div class="flip-face flip-back"><span class="vlabel">Definition</span><div class="vdef">The unit of text a language model reads and writes: often a word, part of a word, or a punctuation mark.</div></div></div></button><button type="button" class="flip-card" aria-pressed="false"><div class="flip-inner"><div class="flip-face flip-front"><span class="vlabel">Term</span><div class="vterm">Training vs. inference</div><span class="fhint">↻ Show definition</span></div><div class="flip-face flip-back"><span class="vlabel">Definition</span><div class="vdef">Training is when the model learns patterns from data. Inference is when the finished model responds to your prompt.</div></div></div></button><button type="button" class="flip-card" aria-pressed="false"><div class="flip-inner"><div class="flip-face flip-front"><span class="vlabel">Term</span><div class="vterm">Rule-based automation</div><span class="fhint">↻ Show definition</span></div><div class="flip-face flip-back"><span class="vlabel">Definition</span><div class="vdef">A system that follows fixed if-then rules written by people, such as an LMS reminder email. It does not learn and is not AI.</div></div></div></button></div></section>
+<section class="block"><p class="eyebrow">Study the material</p><h2 class="h2">Core ideas</h2><div class="rule"></div>
+<div class="cs" id="s1"><div class="cs-head"><span class="cs-num">1.1</span><h3>AI, machine learning, generative AI, and automation</h3></div>
+<p>"AI" gets used for almost any software that seems smart. That vagueness causes real problems. A rule-based reminder email and a chatbot that writes feedback carry very different risks, and they need different checks. The figure below shows how the terms nest.</p>
+<figure class="fig"><svg viewBox="0 0 760 300" role="img" aria-label="Nested diagram. Artificial intelligence contains machine learning, which contains deep learning, which contains generative AI, which contains large language models. Rule-based automation sits outside the AI boundary.">
+<rect x="10" y="14" width="540" height="276" rx="10" class="dg-box2"/>
+<text x="26" y="40" class="dg-t" font-size="14" font-weight="700">Artificial intelligence</text>
+<text x="26" y="58" class="dg-m" font-size="11">systems that perform tasks linked to human intelligence</text>
+<rect x="40" y="70" width="490" height="204" rx="9" fill="#d6d1ee" stroke="#3a3378" stroke-width="1.5"/>
+<text x="56" y="94" class="dg-t" font-size="13.5" font-weight="700">Machine learning</text>
+<text x="56" y="111" class="dg-m" font-size="11">learns patterns from examples: spam filters, captioning</text>
+<rect x="70" y="122" width="440" height="138" rx="8" fill="#b9b1e0" stroke="#3a3378" stroke-width="1.5"/>
+<text x="86" y="145" class="dg-t" font-size="13" font-weight="700">Deep learning</text>
+<rect x="100" y="156" width="390" height="92" rx="8" class="dg-box"/>
+<text x="116" y="178" class="dg-inv" font-size="13" font-weight="700">Generative AI</text>
+<text x="116" y="195" class="dg-inv" font-size="11">produces new text, images, audio, code</text>
+<rect x="300" y="204" width="176" height="36" rx="6" class="dg-acc"/>
+<text x="388" y="227" text-anchor="middle" class="dg-inv" font-size="12.5" font-weight="700">LLMs (chat assistants)</text>
+<rect x="584" y="96" width="166" height="112" rx="8" fill="#ffffff" stroke="#5d5878" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="667" y="126" text-anchor="middle" class="dg-t" font-size="13" font-weight="700">Rule-based</text>
+<text x="667" y="143" text-anchor="middle" class="dg-t" font-size="13" font-weight="700">automation</text>
+<text x="667" y="166" text-anchor="middle" class="dg-m" font-size="11">fixed if-then rules</text>
+<text x="667" y="182" text-anchor="middle" class="dg-m" font-size="11">does not learn</text>
+<text x="667" y="232" text-anchor="middle" class="dg-m" font-size="11">outside the AI boundary</text>
+</svg><figcaption>The risk changes as you move inward. Rule-based automation does exactly what its rules say, so you check the rules. Machine learning can be wrong in patterned ways, so you check its error rates. Generative AI produces new content that has never been checked by anyone, so you check every output that matters.</figcaption></figure>
+<p>Most of this course focuses on generative AI and LLMs, because that is where faculty face the newest decisions. The other categories still matter. Captioning, early-alert analytics, and plagiarism matching are already in many courses, and they raise their own questions about accuracy and fairness.</p>
+<p>Sort the cases below to test the boundaries. Some are deliberately close calls.</p>
+<div class="iw" id="w1a"><div class="iw-top"><span class="iw-eyebrow">Interactive · decide &amp; check</span><button type="button" class="iw-exp" aria-label="Expand interactive">⤢ Expand</button></div><div class="iw-body"><p class="iw-title">Card sort: AI, automation, or neither?</p>
+<p class="iw-intro">Read each case and choose a category. You get the reasoning after each answer. Twelve cards; some are close calls on purpose.</p>
+<div class="w1a-top"><span class="w1a-prog" id="w1a-prog">Card 1 of 12</span><span class="w1a-tally" id="w1a-tally">Correct 0 · Missed 0</span></div>
+<div class="w1a-meter meter" aria-hidden="true"><i id="w1a-bar" style="width:0%"></i></div>
+<div class="w1a-card" id="w1a-card" tabindex="-1"><p class="w1a-case" id="w1a-case"></p></div>
+<div class="iw-row w1a-choices" role="group" aria-label="Choose a category">
+  <button type="button" class="ch" data-cat="ai" aria-pressed="false">AI (learns or generates)</button>
+  <button type="button" class="ch" data-cat="auto" aria-pressed="false">Rule-based automation</button>
+  <button type="button" class="ch" data-cat="none" aria-pressed="false">Neither (a human process)</button>
+</div>
+<div class="iw-result" id="w1a-result" aria-live="polite">Choose a category for the first card.</div>
+<div class="iw-row" style="margin-top:.7rem"><button type="button" class="btn" id="w1a-next" disabled>Next card</button><button type="button" class="btn sec" id="w1a-reset">Reset</button></div>
+</div></div></div>
+<div class="cs" id="s2"><div class="cs-head"><span class="cs-num">1.2</span><h3>How a language model produces text</h3></div>
+<p>A large language model works in two phases. In <strong>training</strong>, it processes a very large body of text and adjusts billions of internal settings, called weights, so that it gets better at predicting the next token. In <strong>inference</strong>, the finished model takes your prompt, breaks it into tokens, and generates a reply one token at a time. Each new token is chosen from a probability distribution over possible next tokens.</p>
+<figure class="fig"><svg viewBox="0 0 760 210" role="img" aria-label="Two-phase pipeline. Training: large text collection, then pattern learning, then model weights. Inference: your prompt, split into tokens, the model computes next-token probabilities, one token is sampled, and the loop repeats until the output is complete.">
+<text x="10" y="22" class="dg-t" font-size="12" font-weight="700">TRAINING (done once, before you use the tool)</text>
+<g font-size="12" font-weight="700">
+<rect x="10" y="34" width="180" height="52" rx="6" class="dg-box2"/><text x="100" y="58" text-anchor="middle" class="dg-t">Large text collection</text><text x="100" y="74" text-anchor="middle" class="dg-m" font-size="10.5" font-weight="400">has a cutoff date</text>
+<rect x="250" y="34" width="180" height="52" rx="6" class="dg-box2"/><text x="340" y="58" text-anchor="middle" class="dg-t">Learn patterns</text><text x="340" y="74" text-anchor="middle" class="dg-m" font-size="10.5" font-weight="400">predict the next token</text>
+<rect x="490" y="34" width="180" height="52" rx="6" class="dg-box"/><text x="580" y="58" text-anchor="middle" class="dg-inv">Model weights</text><text x="580" y="74" text-anchor="middle" class="dg-inv" font-size="10.5" font-weight="400">patterns, not a database</text>
+</g>
+<g class="dg-line" stroke-width="2"><line x1="190" y1="60" x2="242" y2="60"/><line x1="430" y1="60" x2="482" y2="60"/><path d="M580 86 V110 H435 V128"/></g>
+<g class="dg-arrow"><path d="M240 55 L250 60 L240 65Z"/><path d="M480 55 L490 60 L480 65Z"/><path d="M430 126 L435 136 L440 126Z"/></g>
+<text x="10" y="124" class="dg-t" font-size="12" font-weight="700">INFERENCE (every time you send a prompt)</text>
+<g font-size="12" font-weight="700">
+<rect x="10" y="136" width="130" height="52" rx="6" class="dg-box2"/><text x="75" y="160" text-anchor="middle" class="dg-t">Your prompt</text><text x="75" y="176" text-anchor="middle" class="dg-m" font-size="10.5" font-weight="400">+ conversation so far</text>
+<rect x="180" y="136" width="130" height="52" rx="6" class="dg-box2"/><text x="245" y="160" text-anchor="middle" class="dg-t">Tokens</text><text x="245" y="176" text-anchor="middle" class="dg-m" font-size="10.5" font-weight="400">within the context window</text>
+<rect x="350" y="136" width="170" height="52" rx="6" class="dg-box"/><text x="435" y="160" text-anchor="middle" class="dg-inv">Next-token</text><text x="435" y="176" text-anchor="middle" class="dg-inv" font-weight="400" font-size="10.5">probabilities</text>
+<rect x="560" y="136" width="130" height="52" rx="6" class="dg-acc"/><text x="625" y="160" text-anchor="middle" class="dg-inv">Sample one</text><text x="625" y="176" text-anchor="middle" class="dg-inv" font-weight="400" font-size="10.5">add it, repeat</text>
+</g>
+<g class="dg-line" stroke-width="2"><line x1="140" y1="162" x2="172" y2="162"/><line x1="310" y1="162" x2="342" y2="162"/><line x1="520" y1="162" x2="552" y2="162"/><path d="M690 162 H735 V200 H435 V194"/></g>
+<g class="dg-arrow"><path d="M170 157 L180 162 L170 167Z"/><path d="M340 157 L350 162 L340 167Z"/><path d="M550 157 L560 162 L550 167Z"/><path d="M430 196 L435 188 L440 196Z"/></g>
+</svg><figcaption>Two consequences follow. First, the model has no built-in record of where a fact came from, because it stores patterns, not documents. Second, it only "sees" what fits in its context window, so a long syllabus pasted early in a conversation may drop out of view later.</figcaption></figure>
+<p>Three ideas from this pipeline explain most of what you will see in later modules:</p>
+<ul><li><strong>Probabilistic output.</strong> The model picks likely continuations. Likely is often correct, but a common error can be more likely than a rare truth.</li>
+<li><strong>Knowledge cutoff.</strong> Training data stops at a date. Unless the tool searches the web or your documents, it does not know about anything after that date, including your institution's newest policy.</li>
+<li><strong>Context.</strong> The prompt, any files you attach, and the conversation so far are all the model has to work with in that moment. Better context usually produces better output, which is the basis of Module 3.</li></ul>
+<p>Try it below. The probabilities are made up for teaching, but the mechanism is the real one.</p>
+<div class="iw" id="w1b"><div class="iw-top"><span class="iw-eyebrow">Interactive · decide &amp; check</span><button type="button" class="iw-exp" aria-label="Expand interactive">⤢ Expand</button></div><div class="iw-body"><p class="iw-title">Next-token predictor</p>
+<p class="iw-intro">Pick a sentence start, predict the most likely next word, then explore how temperature changes what the model samples. <strong>All probabilities here are illustrative, written for this course, not measured from a real model.</strong></p>
+<div class="iw-row" role="group" aria-label="Sentence start">
+  <button type="button" class="ch" data-ctx="0" aria-pressed="true">Capital of Australia</button>
+  <button type="button" class="ch" data-ctx="1" aria-pressed="false">How students learn</button>
+  <button type="button" class="ch" data-ctx="2" aria-pressed="false">A study citation</button>
+</div>
+<p class="w1b-prompt" id="w1b-prompt"></p>
+<div class="w1b-stage" id="w1b-predict">
+  <p class="w1b-h">1 · Your prediction: which word is most likely next?</p>
+  <div class="iw-row" id="w1b-guess" role="group" aria-label="Your prediction"></div>
+</div>
+<div class="w1b-stage" id="w1b-explore" hidden>
+  <p class="w1b-h">2 · Illustrative next-token probabilities</p>
+  <div class="w1b-bars" id="w1b-bars"></div>
+  <div class="w1b-temp"><label for="w1b-t">Temperature <b id="w1b-tv">1.0</b></label><input type="range" id="w1b-t" min="0.1" max="2" step="0.1" value="1"><span class="w1b-scale"><span>0.1 focused</span><span>2.0 varied</span></span></div>
+  <div class="iw-row"><button type="button" class="btn" id="w1b-sample">Sample 10 runs</button></div>
+  <div class="w1b-runs" id="w1b-runs" aria-live="polite"></div>
+</div>
+<div class="iw-result" id="w1b-result" aria-live="polite">Make a prediction first.</div>
+<div class="iw-row" style="margin-top:.7rem"><button type="button" class="btn sec" id="w1b-reset">Reset</button></div>
+</div></div></div>
+<div class="cs" id="s3"><div class="cs-head"><span class="cs-num">1.3</span><h3>Fluency is not truth</h3></div>
+<p>Language models are trained to produce text that reads well. Readable, confident text feels trustworthy, and that feeling is the main trap. The comparison below comes from a typical request for a short science explanation.</p>
+<div class="prompt" data-copy>Explain why Earth has seasons. Write for 9th-grade students in about 80 words.</div>
+<div class="output flawed">Earth has seasons because its distance from the Sun changes throughout the year. In summer, Earth's orbit brings it closer to the Sun, so sunlight is stronger and days feel warmer. In winter, Earth moves farther away, so less heat reaches the surface. This is why the Northern and Southern Hemispheres both enjoy summer at the same time of year. Understanding our orbit helps explain the rhythm of the seasons.</div>
+<details class="flaw-reveal"><summary>Show the errors</summary><p>The whole explanation rests on a common misconception. Seasons come from the tilt of Earth's axis, which changes how directly sunlight strikes each hemisphere. Earth is actually closest to the Sun in early January, during Northern Hemisphere winter. The hemispheres also have opposite seasons, not the same season. The paragraph is well organized, age-appropriate, and wrong in every sentence that matters. A misconception that appears often in everyday writing can be a likely continuation even when it is false.</p></details>
+<p>Now compare a less polished answer a teaching assistant might jot down:</p>
+<div class="callout in-practice"><b class="lbl">Accurate but rough</b><p>"Seasons = tilt, not distance. Earth's axis is tilted about 23.5 degrees. When your half leans toward the Sun, light hits more directly and days are longer, so it's summer. Other half gets winter at the same time. We're actually closest to the Sun in January."</p></div>
+<p>The rough answer needs editing. The fluent answer needs replacing. That is the core habit of this course: judge an output by checking its claims, not by how finished it sounds.</p>
+<h4>Limits to keep in mind</h4>
+<div class="tscroll"><table class="t"><thead><tr><th>Limitation</th><th>What it means for your teaching</th></tr></thead><tbody>
+<tr><td>Confabulation</td><td>Invented facts, quotations, and citations in a confident tone. Covered in depth in Module 4.</td></tr>
+<tr><td>Sycophancy</td><td>A tendency to agree with the user. If you suggest an answer, the model may endorse it even when it is wrong.</td></tr>
+<tr><td>Uneven knowledge</td><td>Strong on common topics, weaker on local, specialized, recent, or non-English material.</td></tr>
+<tr><td>Bias</td><td>Patterns in training text, including stereotypes, can appear in examples, names, and images.</td></tr>
+<tr><td>No understanding of your students</td><td>It does not know your learners, your outcomes, or your context unless you supply them, and it cannot know them the way you do.</td></tr>
+</tbody></table></div>
+<div class="callout in-practice"><b class="lbl">In practice</b><p><span class="disc">STEM</span>A chemistry instructor uses AI to draft ten practice problems. She solves each one herself before posting. Two answer keys are wrong, and one problem has no valid answer. Fixing them takes five minutes and saves a week of student confusion.</p><p><span class="disc">CTE</span>An HVAC instructor asks for a troubleshooting checklist. The list is sensible but generic and misses the safety lockout step his program requires. He keeps the structure and adds the program-specific steps.</p></div></div>
+<div class="cs" id="s4"><div class="cs-head"><span class="cs-num">1.4</span><h3>Human-centered use: what stays human</h3></div>
+<p>UNESCO's AI Competency Framework for Teachers (2024) starts with a <strong>human-centered mindset</strong>, ahead of AI foundations and pedagogy. The idea is simple. AI should extend what educators and students can do, and people stay accountable for decisions that affect learners. EDUCAUSE's 2024 AI literacy framework makes a similar point by pairing technical understanding with evaluative skills and ethical considerations.</p>
+<p>A practical way to apply this is to ask three questions about any task before you bring AI into it:</p>
+<ol><li><strong>What is the essential human contribution?</strong> Judgment about a student, a relationship, disciplinary expertise, or a value choice usually belongs here.</li>
+<li><strong>What would go wrong if the output were wrong?</strong> This sets the stakes.</li>
+<li><strong>Who can inspect and override the result?</strong> If no one can, the task is not ready for AI.</li></ol>
+<h4>The opportunity-risk map</h4>
+<p>Your first portfolio artifact maps your course across seven areas. For each area, note one possible AI use, the main risk, and what must stay under your control.</p>
+<div class="tscroll"><table class="t"><thead><tr><th>Area</th><th>Example opportunity</th><th>Example risk</th><th>Stays human</th></tr></thead><tbody>
+<tr><td>Preparation</td><td>Draft varied examples or cases</td><td>Inaccurate or generic content</td><td>Selection and accuracy check</td></tr>
+<tr><td>Instruction</td><td>Generate alternative explanations</td><td>Explanations that skip key reasoning</td><td>What is taught and why</td></tr>
+<tr><td>Student learning</td><td>Practice partner or critic</td><td>Students outsource the thinking</td><td>Design of the cognitive work</td></tr>
+<tr><td>Feedback</td><td>First-pass comments on drafts</td><td>Generic or biased comments</td><td>Final feedback and tone</td></tr>
+<tr><td>Assessment</td><td>Item variants for practice</td><td>Invalid evidence of learning</td><td>Grades and integrity decisions</td></tr>
+<tr><td>Administration</td><td>Draft announcements or FAQs</td><td>Wrong dates or policies</td><td>Final wording and facts</td></tr>
+<tr><td>Accessibility</td><td>Alt-text or plain-language drafts</td><td>Inaccurate descriptions</td><td>Review with accessibility standards</td></tr>
+</tbody></table></div>
+<div class="callout guard"><b class="lbl">Responsible use</b><p>While you build your map, use only course materials you would be comfortable posting publicly. Do not paste student work, rosters, grades, or accommodation information into any tool your institution has not approved for that data.</p></div></div>
+<div class="cs" id="s5"><div class="cs-head"><span class="cs-num">1.5</span><h3>Choosing a pilot problem</h3></div>
+<p>The rest of this course is built around one real teaching problem. A good pilot problem is small, recurring, and low or moderate in stakes. It is also a problem you already care about solving, with or without AI.</p>
+<div class="tscroll"><table class="t"><thead><tr><th>Stronger pilot problem</th><th>Weaker pilot problem</th></tr></thead><tbody>
+<tr><td>"Students struggle to apply the concept to new cases. I need more varied practice cases each week."</td><td>"I want to use AI in my course."</td></tr>
+<tr><td>"My feedback on lab report drafts arrives too late to help. I want faster formative comments."</td><td>"I want AI to grade final exams."</td></tr>
+<tr><td>"My readings assume background some students lack. I want a short primer at two reading levels."</td><td>"I want a chatbot that answers every student question."</td></tr>
+</tbody></table></div>
+<p>The stronger problems name a learning need and a way to tell if things improved. The weaker ones name a tool, or they hand over a decision that should stay human.</p>
+<p>Write your problem statement with four parts: the problem, who it affects, a success criterion you could observe, and what must remain under your control. Then document your current workflow so you have a baseline to compare against.</p>
+<div class="callout in-practice"><b class="lbl">In practice</b><p><span class="disc">Student support</span>An academic advisor wants to cut the time spent writing the same orientation emails. Her success criterion is "same accuracy, half the drafting time." What stays human: every message is checked against current deadlines, and any message about a specific student's situation is written by her.</p><p><span class="disc">Humanities</span>A history instructor wants more primary-source practice. He decides AI may draft guiding questions, but it may not select or summarize the sources, because source selection is the disciplinary skill he is teaching.</p></div></div>
+</section>
+<section class="block" id="studio"><p class="eyebrow">Live studio · 60 minutes</p><h2 class="h2">Session run sheet</h2><div class="rule"></div><div class="tscroll"><table class="t run"><thead><tr><th>Minutes</th><th>Move</th><th>What happens</th></tr></thead><tbody><tr><td>0–5</td><td>Check-in poll</td><td>"Which word best describes how you feel about AI in your teaching right now?" Show the word cloud and name the range in the room without judging it.</td></tr><tr><td>5–15</td><td>Concept</td><td>The nested diagram (AI, machine learning, generative AI, LLM, automation) and the training and inference pipeline. One contrasting example: a rule-based reminder versus a chatbot writing feedback.</td></tr><tr><td>15–25</td><td>Demonstration</td><td>Facilitator runs the next-token predictor and the seasons example. Participants predict the next word, then compare the fluent wrong answer with the rough accurate one.</td></tr><tr><td>25–43</td><td>Card sort and map</td><td>Pairs complete the "AI, automation, or neither?" card sort (W1a or printed cards), then each person starts an opportunity-risk map for one course across the seven areas.</td></tr><tr><td>43–53</td><td>Peer critique</td><td>Discipline triads review one another's maps. Protocol: "One opportunity you underrated; one risk you did not name; one thing that must stay human."</td></tr><tr><td>53–58</td><td>Commitment</td><td>Each participant drafts a one-sentence pilot problem and names what must stay under human control.</td></tr><tr><td>58–60</td><td>Exit ticket</td><td>"What is one thing you now expect an LLM to get wrong in your discipline, and why?"</td></tr></tbody></table></div></section>
+<section class="block" id="fieldwork"><p class="eyebrow">Fieldwork · about 60 minutes</p><h2 class="h2">Apply it to your course (10–40–10)</h2><div class="rule"></div><div class="field"><div><span class="min">10<small>min · review</small></span><p>Reread 1.4 and 1.5. Skim your institution's current AI guidance, or note that none exists yet.</p></div><div><span class="min">40<small>min · apply</small></span><ol><li>Finish your opportunity-risk map across all seven areas.</li><li>Choose one low- or moderate-stakes teaching problem from the map.</li><li>Write a problem statement: problem, who it affects, success criterion, what stays human.</li><li>Document your current workflow for this problem in five to eight steps, with rough time for each.</li></ol></div><div><span class="min">10<small>min · share</small></span><p>Post your problem statement. Reply to one peer with a question that sharpens their success criterion.</p></div></div><div class="callout build"><b class="lbl">Course build · week 1 deliverable</b><p><strong>Choose your unit and gather its files.</strong> Fill in the course profile in the Course Build Studio. Pick one unit of 3 to 6 lessons and list the files you will draw on: syllabus, lecture notes, readings you are licensed to use, labs, and past assignments with student details removed.</p><p><a class="go" href="builders.html#profile">Course profile →</a></p></div></section>
+<section class="block" id="artifact"><p class="eyebrow">Portfolio artifact 1 of 8</p><h2 class="h2">What you add to your portfolio</h2><div class="rule"></div><div class="artifact"><div><b>Opportunity-risk map and pilot problem statement</b><p>Your seven-area map for one course, plus a pilot problem statement with a success criterion, a baseline workflow, and a clear line around what stays under human control.</p></div><a class="go" href="portfolio.html#a1">Open in portfolio →</a></div>
+<div class="paths"><div><b class="lbl">Foundation path</b><p>Complete the map for three of the seven areas that matter most in your course, and write the pilot problem statement.</p></div><div><b class="lbl">Extension path</b><p>Complete all seven areas, then rank the opportunities by expected benefit and risk. Add a second candidate problem in case the first turns out to be a poor fit.</p></div></div>
+</section>
+<section class="block" id="check"><p class="eyebrow">Judgment check · unscored practice</p><h2 class="h2">Test your judgment</h2><div class="rule"></div><p>Each item is a new case. Choose the best answer, then check to read feedback on every option.</p><form id="quiz" onsubmit="return false"><div class="q" data-answer="A"><p class="q-stem"><span class="qn">Q1.</span>A colleague says, "The chatbot looked up the 2019 study and summarized it for me." The tool has no web search and no attached documents. What is the most accurate description of what happened?</p><fieldset class="options"><legend>Question 1 options</legend><label class="opt"><input type="radio" name="q1" value="A"><span><span class="opt-letter">A.</span> It generated a summary from patterns learned in training, which may not match the real study.</span></label><label class="opt"><input type="radio" name="q1" value="B"><span><span class="opt-letter">B.</span> It retrieved the stored study from its training data and condensed the key findings for you.</span></label><label class="opt"><input type="radio" name="q1" value="C"><span><span class="opt-letter">C.</span> It could not have, because the study was published before the model's training cutoff date.</span></label><label class="opt"><input type="radio" name="q1" value="D"><span><span class="opt-letter">D.</span> It quietly searched the web in the background, since most chatbots now browse by default.</span></label></fieldset><div class="rationale"><b>Best answer: A.</b> Without search or documents, the model generates text from learned patterns. The summary might be close, partly wrong, or about a study that does not exist. Only the study itself can confirm it.<ul><li><b>B.</b> Training stores patterns in model weights, not retrievable copies of documents to condense on demand.</li><li><b>C.</b> Older material is what training covers. The issue is whether the output matches the source, not the date.</li><li><b>D.</b> A tool without search cannot browse. Tools that do search usually show links you can open.</li></ul></div></div><div class="q" data-answer="B"><p class="q-stem"><span class="qn">Q2.</span>Which task is the best candidate for a first AI pilot in a course?</p><fieldset class="options"><legend>Question 2 options</legend><label class="opt"><input type="radio" name="q2" value="A"><span><span class="opt-letter">A.</span> Scoring final essays automatically with a rubric you wrote, to save grading time at term end.</span></label><label class="opt"><input type="radio" name="q2" value="B"><span><span class="opt-letter">B.</span> Drafting varied practice problems that you solve and check yourself before posting.</span></label><label class="opt"><input type="radio" name="q2" value="C"><span><span class="opt-letter">C.</span> Drafting accommodation letters faster by giving the tool each student's documented needs.</span></label><label class="opt"><input type="radio" name="q2" value="D"><span><span class="opt-letter">D.</span> Answering routine student questions after hours with a chatbot in place of office hours.</span></label></fieldset><div class="rationale"><b>Best answer: B.</b> It is recurring, low to moderate in stakes, uses no student data, and keeps you in control through a clear check before anything reaches students.<ul><li><b>A.</b> Final grades are high stakes and must stay under human judgment, even when the rubric is yours.</li><li><b>C.</b> Disability information is highly protected, and errors in accommodation letters carry serious consequences.</li><li><b>D.</b> Office hours carry the relationship and judgment this module identifies as the essential human contribution.</li></ul></div></div><div class="q" data-answer="C"><p class="q-stem"><span class="qn">Q3.</span>Your LMS releases Module 2 only after a student scores 80% or higher on Quiz 1. Which category is this?</p><fieldset class="options"><legend>Question 3 options</legend><label class="opt"><input type="radio" name="q3" value="A"><span><span class="opt-letter">A.</span> Generative AI</span></label><label class="opt"><input type="radio" name="q3" value="B"><span><span class="opt-letter">B.</span> Machine learning</span></label><label class="opt"><input type="radio" name="q3" value="C"><span><span class="opt-letter">C.</span> Rule-based automation</span></label><label class="opt"><input type="radio" name="q3" value="D"><span><span class="opt-letter">D.</span> Neither; it is a human decision</span></label></fieldset><div class="rationale"><b>Best answer: C.</b> A fixed if-then rule written by a person controls the release. Nothing is learned from data and nothing new is generated. You check it by checking the rule.<ul><li><b>A.</b> Nothing is generated.</li><li><b>B.</b> The rule does not learn from examples; 80% was set by a person.</li><li><b>D.</b> A human set the rule, but the system applies it automatically every time.</li></ul></div></div><div class="q" data-answer="D"><p class="q-stem"><span class="qn">Q4.</span>You run the same prompt twice and get two different lists of discussion questions. What explains this?</p><fieldset class="options"><legend>Question 4 options</legend><label class="opt"><input type="radio" name="q4" value="A"><span><span class="opt-letter">A.</span> The tool has a bug, since the same input should always produce the same output.</span></label><label class="opt"><input type="radio" name="q4" value="B"><span><span class="opt-letter">B.</span> The model learned from your first request and tried to improve the second answer.</span></label><label class="opt"><input type="radio" name="q4" value="C"><span><span class="opt-letter">C.</span> The provider updated the model between your two requests, which happens constantly.</span></label><label class="opt"><input type="radio" name="q4" value="D"><span><span class="opt-letter">D.</span> The model samples from probabilities, so each run can take a different path.</span></label></fieldset><div class="rationale"><b>Best answer: D.</b> Variation is built in. It helps brainstorming and is a reason to verify facts, because a different run could produce a different claim.<ul><li><b>A.</b> This is expected behavior, not a fault. Identical output is not the design.</li><li><b>B.</b> Models do not retrain on your prompt between requests. The conversation context may change, but the weights do not.</li><li><b>C.</b> Providers update models occasionally, not between two requests made minutes apart. The variation happens within the same model.</li></ul></div></div><div class="q" data-answer="B"><p class="q-stem"><span class="qn">Q5.</span>You have two explanations of a concept. One is polished and confident. The other is rough but written by a colleague in the field. How should you decide which to build on?</p><fieldset class="options"><legend>Question 5 options</legend><label class="opt"><input type="radio" name="q5" value="A"><span><span class="opt-letter">A.</span> Build on the polished one, because students learn more from clear, confident writing.</span></label><label class="opt"><input type="radio" name="q5" value="B"><span><span class="opt-letter">B.</span> Check the key claims in both against an authoritative source, then edit the accurate one.</span></label><label class="opt"><input type="radio" name="q5" value="C"><span><span class="opt-letter">C.</span> Build on the rough one, because a colleague in the field is more reliable than any model.</span></label><label class="opt"><input type="radio" name="q5" value="D"><span><span class="opt-letter">D.</span> Merge the two so students see both versions and can judge the explanations themselves.</span></label></fieldset><div class="rationale"><b>Best answer: B.</b> Fluency is not evidence and authorship is not proof. Checking claims decides accuracy, and editing fixes style. A rough accurate draft is usually faster to improve than a polished wrong one.<ul><li><b>A.</b> Polish can hide errors, as the seasons example shows.</li><li><b>C.</b> Humans make mistakes too. The rule is to check claims, whoever wrote them.</li><li><b>D.</b> Merging can carry the errors of both into one confusing text, and students lack the expertise to sort them.</li></ul></div></div></form><div class="quiz-bar"><button class="btn" type="button" onclick="FAI.grade()">Check answers</button><button class="btn sec" type="button" onclick="FAI.resetQuiz()">Reset</button><span id="score" aria-live="polite"></span></div></section>
+<section class="block" id="sources"><p class="eyebrow">Maintenance & sources</p><h2 class="h2">Before you teach this module</h2><div class="rule"></div><div class="callout perish"><b class="lbl">Check before delivery · perishable · verified 2026-10-22</b><p>Survey figures cited in the orientation and facilitator materials come from the Digital Education Council Global AI Faculty Survey 2025 (published January 2025) and Global AI Student Survey 2024. Check for newer editions before each offering.</p></div><div class="callout perish"><b class="lbl">Check before delivery · perishable · verified 2026-10-22</b><p>The U.S. Department of Education's 2023 report <em>Artificial Intelligence and the Future of Teaching and Learning</em> called for humans in the loop and inspectable, overridable systems. The office that published it closed in 2025 and the report is no longer current federal guidance. Treat it as historical. Current federal guidance includes the Department's July 22, 2025 Dear Colleague Letter on AI use. Check ed.gov for updates.</p></div><div class="callout perish"><b class="lbl">Check before delivery · perishable · verified 2026-10-22</b><p>Context-window sizes, knowledge cutoff dates, and whether a tool searches the web change with each product release. Confirm these for your approved tool rather than relying on general statements.</p></div><div class="callout local"><b class="lbl">Local policy · fill in for your institution</b><p>Current institutional AI guidance: <span class="fill" data-local="policy">[link, or "interim guidance in development"]</span>. Approved general-purpose AI tool for this course: <span class="fill" data-local="toolaccess">[name and access instructions]</span>. Teaching center contact: <span class="fill" data-local="teaching">[name, email]</span>.</p></div><ol class="sources"><li>UNESCO. (2024). <em>AI competency framework for teachers</em>. <a href="https://www.unesco.org/en/articles/ai-competency-framework-teachers">https://www.unesco.org/en/articles/ai-competency-framework-teachers</a></li><li>EDUCAUSE. (2024). <em>AI literacy in teaching and learning: A durable framework for higher education</em>. <a href="https://www.educause.edu/content/2024/ai-literacy-in-teaching-and-learning/executive-summary">https://www.educause.edu/content/2024/ai-literacy-in-teaching-and-learning/executive-summary</a></li><li>Digital Education Council. (2025). <em>What faculty want: Key results from the Global AI Faculty Survey 2025</em>. <a href="https://www.digitaleducationcouncil.com/post/what-faculty-want-key-results-from-the-global-ai-faculty-survey-2025">https://www.digitaleducationcouncil.com/post/what-faculty-want-key-results-from-the-global-ai-faculty-survey-2025</a></li><li>National Institute of Standards and Technology. (2024). <em>Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile</em> (NIST AI 600-1). <a href="https://doi.org/10.6028/NIST.AI.600-1">https://doi.org/10.6028/NIST.AI.600-1</a></li><li>U.S. Department of Education, Office of Educational Technology. (2023). <em>Artificial intelligence and the future of teaching and learning</em>. Historical; no longer maintained. <span class="nv">(from the source plan; not re-verified)</span></li></ol></section>
+<nav class="pager" aria-label="Lesson pager"><a href="lesson00.html"><span class="dir">← Previous</span><span class="nm">Orientation and Readiness</span></a><a class="next" href="lesson02.html"><span class="dir">Next →</span><span class="nm">LLMs and the AI Tool Ecosystem</span></a></nav></main>
+<footer class="foot">Faculty AI Integration Studio · Institution-neutral faculty professional development · Content verified 2026-10-22. Check dated callouts before each delivery.</footer>
+</div>
+<script src="fai.js"></script>
+<script>FAI.widget('w1a', function (root) {
+  var NAMES = { ai: 'AI', auto: 'Rule-based automation', none: 'Neither' };
+  var CARDS = [
+    { t: 'The LMS emails every student 24 hours before an assignment is due.', a: 'auto', r: 'A person set a fixed rule: if the due date is tomorrow, send this message. Nothing is learned or generated.' },
+    { t: 'A chat assistant drafts three versions of a case study from your outline.', a: 'ai', r: 'Generative AI. It produces new text from learned patterns, so every version needs your accuracy check.' },
+    { t: 'An email spam filter that improved by learning from millions of messages people marked as spam.', a: 'ai', r: 'Machine learning. It learned patterns from labeled examples instead of following hand-written rules.' },
+    { t: 'A gradebook formula drops each student\'s lowest quiz score.', a: 'auto', r: 'A fixed calculation you can read and check. It does exactly what the formula says.' },
+    { t: 'Automatic captions appear on your recorded lecture video.', a: 'ai', r: 'Machine learning speech recognition. It can be wrong in patterned ways, especially on technical terms, names, and accents, so captions used for accommodations need human review.' },
+    { t: 'A classmate reviews a draft using your peer-review rubric.', a: 'none', r: 'A human process supported by a document. The rubric is a tool, but the judgment is a person\'s.' },
+    { t: 'Multiple-choice quiz answers are scored against an answer key you wrote.', a: 'auto', r: 'Rule-based. The system compares each answer to your key. If the key is wrong, every score is wrong in the same way.' },
+    { t: 'Your phone suggests the next word while you type a message.', a: 'ai', r: 'A small language model predicting the next token: the same basic mechanism as a chat assistant, at a smaller scale.' },
+    { t: 'An image tool produces a diagram of a plant cell from a text description.', a: 'ai', r: 'Generative AI for images. Labels and structures can look right and still be wrong, so check it like any other output.' },
+    { t: 'A library catalog returns every record whose title contains your exact keyword.', a: 'auto', r: 'Exact keyword matching is a fixed rule. Some catalogs now add AI-based relevance ranking, so check what your library uses.' },
+    { t: 'A video platform recommends what to watch next based on viewing patterns.', a: 'ai', r: 'Machine learning recommendation. It learns from behavior, which can narrow what students see.' },
+    { t: 'Students sign up for office-hour slots on a paper sheet on your door.', a: 'none', r: 'No computing system makes or applies a decision here.' }
+  ];
+  var i, ok, miss, answered, picks;
+  var caseEl = root.querySelector('#w1a-case'), res = root.querySelector('#w1a-result'), next = root.querySelector('#w1a-next');
+  var btns = root.querySelectorAll('[data-cat]');
+  function show() {
+    answered = false;
+    caseEl.textContent = CARDS[i].t;
+    btns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); b.classList.remove('w1a-right', 'w1a-wrong'); b.disabled = false; });
+    root.querySelector('#w1a-prog').textContent = 'Card ' + (i + 1) + ' of ' + CARDS.length;
+    next.disabled = true;
+    next.textContent = i === CARDS.length - 1 ? 'See summary' : 'Next card';
+    res.className = 'iw-result'; res.textContent = 'Choose a category for this card.';
+    tally();
+  }
+  function tally() {
+    root.querySelector('#w1a-tally').textContent = 'Correct ' + ok + ' · Missed ' + miss;
+    root.querySelector('#w1a-bar').style.width = ((ok + miss) / CARDS.length * 100) + '%';
+  }
+  function start() { i = 0; ok = 0; miss = 0; picks = []; root.querySelector('.w1a-choices').style.display = ''; next.style.display = ''; root.querySelector('#w1a-reset').textContent = 'Reset'; show(); }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (answered) return;
+      answered = true;
+      var c = CARDS[i], right = b.dataset.cat === c.a;
+      b.setAttribute('aria-pressed', 'true');
+      btns.forEach(function (x) { x.disabled = true; if (x.dataset.cat === c.a) x.classList.add('w1a-right'); });
+      if (!right) b.classList.add('w1a-wrong');
+      if (right) ok++; else miss++;
+      picks.push(right);
+      res.className = 'iw-result ' + (right ? 'ok' : 'bad');
+      res.textContent = (right ? '✓ Correct: ' : '✗ Not quite. Answer: ') + NAMES[c.a] + '. ' + c.r;
+      next.disabled = false; next.focus();
+      tally();
+    });
+  });
+  next.addEventListener('click', function () {
+    if (i < CARDS.length - 1) { i++; show(); root.querySelector('#w1a-card').focus(); return; }
+    root.querySelector('.w1a-choices').style.display = 'none';
+    caseEl.textContent = 'You sorted all 12 cards: ' + ok + ' correct.';
+    var missed = CARDS.filter(function (c, k) { return !picks[k]; });
+    res.className = 'iw-result ' + (miss ? 'warn' : 'ok');
+    res.innerHTML = (miss ? '⚠ Review the cards you missed:<ul class="w1a-sum">' + missed.map(function (c) { return '<li><b>' + NAMES[c.a] + ':</b> ' + FAI.esc(c.t) + '</li>'; }).join('') + '</ul>'
+      : '✓ All correct. ') + '<p style="margin-top:.5rem">The point is not the label. Each category needs a different check: read the rules for automation, ask about error rates for machine learning, and verify every important output from generative AI.</p>';
+    next.style.display = 'none'; root.querySelector('#w1a-reset').textContent = 'Start over';
+    root.querySelector('#w1a-prog').textContent = 'Complete';
+  });
+  root.querySelector('#w1a-reset').addEventListener('click', start);
+  start();
+});
+FAI.widget('w1b', function (root) {
+  var CTX = [
+    { s: 'The capital of Australia is', w: [['Canberra', .58], ['Sydney', .30], ['Melbourne', .08], ['a', .03], ['Perth', .01]], bad: ['Sydney', 'Melbourne', 'Perth'],
+      note: 'Canberra is correct. Sydney is a common error in everyday writing, so it earns a large share of probability. At low temperature the model almost always says Canberra. Raise the temperature and the fluent wrong answer appears more often.' },
+    { s: 'Students learn best when they', w: [['practice', .34], ['are', .24], ['feel', .16], ['receive', .12], ['teach', .08], ['sleep', .06]], bad: [],
+      note: 'There is no single right answer here. Higher temperature gives more varied continuations, which helps brainstorming. Variety is a feature for ideas and a risk for facts.' },
+    { s: 'According to a 2019 study published in the Journal of', w: [['Educational', .30], ['Higher', .22], ['Applied', .18], ['Learning', .16], ['Research', .14]], bad: [],
+      note: 'Every option continues the pattern of a citation, and the model will finish it whether or not such a study exists. These probabilities measure what sounds like a citation, not what is real. This is how fabricated references arise (Module 4).' }
+  ];
+  var c = 0, guessed = false;
+  var tIn = root.querySelector('#w1b-t'), res = root.querySelector('#w1b-result');
+  function probs() {
+    var T = +tIn.value, w = CTX[c].w, q = w.map(function (x) { return Math.pow(x[1], 1 / T); }), s = q.reduce(function (a, b) { return a + b; }, 0);
+    return w.map(function (x, k) { return [x[0], q[k] / s]; });
+  }
+  function bars() {
+    var p = probs(), mx = Math.max.apply(null, p.map(function (x) { return x[1]; }));
+    root.querySelector('#w1b-bars').innerHTML = p.map(function (x) {
+      return '<div class="w1b-bar' + (x[1] === mx ? ' top' : '') + '"><span class="w">' + x[0] + '</span><span class="meter" role="img" aria-label="' + x[0] + ' ' + Math.round(x[1] * 100) + ' percent"><i style="width:' + (x[1] * 100) + '%"></i></span><span class="n">' + Math.round(x[1] * 100) + '%</span></div>';
+    }).join('');
+    root.querySelector('#w1b-tv').textContent = (+tIn.value).toFixed(1);
+  }
+  function load() {
+    guessed = false;
+    root.querySelectorAll('[data-ctx]').forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset.ctx === c); });
+    root.querySelector('#w1b-prompt').innerHTML = FAI.esc(CTX[c].s) + ' <span>___</span>';
+    var opts = CTX[c].w.slice(0, 4).map(function (x) { return x[0]; }).sort();
+    root.querySelector('#w1b-guess').innerHTML = opts.map(function (o) { return '<button type="button" class="ch" data-g="' + o + '" aria-pressed="false">' + o + '</button>'; }).join('');
+    root.querySelector('#w1b-explore').hidden = true;
+    root.querySelector('#w1b-runs').innerHTML = '';
+    tIn.value = 1; bars();
+    res.className = 'iw-result'; res.textContent = 'Make a prediction first.';
+  }
+  root.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.ctx) { c = +b.dataset.ctx; load(); }
+    else if (b.dataset.g && !guessed) {
+      guessed = true;
+      root.querySelectorAll('[data-g]').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+      var top = CTX[c].w[0][0], right = b.dataset.g === top;
+      root.querySelector('#w1b-explore').hidden = false; bars();
+      res.className = 'iw-result ' + (right ? 'ok' : 'warn');
+      res.textContent = (right ? '✓ You matched the most likely word, "' + top + '". ' : '⚠ The most likely word in this illustration is "' + top + '". ') + 'Now move the temperature slider and sample 10 runs. ' + CTX[c].note;
+    }
+  });
+  tIn.addEventListener('input', function () { bars(); root.querySelector('#w1b-runs').innerHTML = ''; });
+  root.querySelector('#w1b-sample').addEventListener('click', function () {
+    var p = probs(), out = [], counts = {};
+    for (var k = 0; k < 10; k++) {
+      var r = Math.random(), acc = 0, pick = p[p.length - 1][0];
+      for (var j = 0; j < p.length; j++) { acc += p[j][1]; if (r < acc) { pick = p[j][0]; break; } }
+      out.push(pick); counts[pick] = (counts[pick] || 0) + 1;
+    }
+    var bad = CTX[c].bad, nbad = out.filter(function (w) { return bad.indexOf(w) >= 0; }).length;
+    root.querySelector('#w1b-runs').innerHTML = '<b>10 runs at temperature ' + (+tIn.value).toFixed(1) + ':</b><ol>' + out.map(function (w) { return '<li' + (bad.indexOf(w) >= 0 ? ' class="flag"' : '') + '>' + w + '</li>'; }).join('') + '</ol>' +
+      Object.keys(counts).map(function (w) { return w + ' ×' + counts[w]; }).join(', ') + (bad.length ? '. Wrong answers (marked ✗): ' + nbad + ' of 10.' : '.');
+  });
+  root.querySelector('#w1b-reset').addEventListener('click', function () { c = 0; load(); });
+  load();
+});
+</script>
+</body>
+</html>
